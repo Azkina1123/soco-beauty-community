@@ -10,6 +10,8 @@ export default {
         extend: {
             colors: {
                 "cool-blue": "#3d86b8",
+                "cool-blue-hover": "#3678a5",
+                "cool-blue-click": "#306b93",
                 "medium-turquoise": "#56cfe2",
                 "oasis": "#f8efcf",
                 "cyan-blue": "#90b4e1",
@@ -19,6 +21,8 @@ export default {
             },
             backgroundColor: {
                 "cool-blue": "#3d86b8",
+                "cool-blue-hover": "#3678a5",
+                "cool-blue-click": "#306b93",
                 "medium-turquoise": "#56cfe2",
                 "oasis": "#f8efcf",
                 "cyan-blue": "#90b4e1",
@@ -28,6 +32,8 @@ export default {
             },
             borderColor: {
                 "cool-blue": "#3d86b8",
+                "cool-blue-hover": "#3678a5",
+                "cool-blue-click": "#306b93",
                 "medium-turquoise": "#56cfe2",
                 "oasis": "#f8efcf",
                 "cyan-blue": "#90b4e1",

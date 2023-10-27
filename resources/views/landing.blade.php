@@ -21,23 +21,24 @@
 
     {{-- intro --}}
     <div class="flex justify-around px-14 py-28">
-        <div class="flex flex-col items-center w-[30%] border-0 border-e-2 border-e-medium-forest-green">
+        <div class="flex flex-col justify-center items-center w-[34%] border-0 border-e-2 border-e-medium-forest-green px-2">
             <img src="" alt="">
-            <h2 class="font-bold text-medium-forest-green">Trusted Information</h2>
-            <p class="text-light-slate-grey">Real product information from official store</p>
+            <h2 class="font-bold text-medium-forest-green text-center">Trusted Information</h2>
+            <p class="text-light-slate-grey text-center">Real product information from official store</p>
 
         </div>
 
-        <div class="flex flex-col items-center w-[30%] border-0 border-e-2 border-e-medium-forest-green">
+        <div
+            class="flex flex-col justify-center items-center w-[42%] border-0 border-e-2 border-e-medium-forest-green px-2">
             <img src="" alt="">
-            <h2 class="font-bold text-medium-forest-green">Honest Review</h2>
-            <p class="text-light-slate-grey">Given directly by product users</p>
+            <h2 class="font-bold text-medium-forest-green text-center">Honest Review</h2>
+            <p class="text-light-slate-grey  text-center">Given directly by product users</p>
         </div>
 
-        <div class="flex flex-col items-center w-[30%]">
+        <div class="flex flex-col justify-center items-center w-[34%] px-2">
             <img src="" alt="">
-            <h2 class="font-bold text-medium-forest-green">Share your Experience</h2>
-            <p class="text-light-slate-grey">Share your skincare experience to others</p>
+            <h2 class="font-bold text-medium-forest-green text-center">Share your Experience</h2>
+            <p class="text-light-slate-grey  text-center">Share your skincare experience to others</p>
         </div>
     </div>
 
