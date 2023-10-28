@@ -25,7 +25,7 @@ class AkunFactory extends Factory
         return [
             'username' => fake()->userName(),
             'nama_lengkap' => fake()->name(),
-            'admin' => '0',
+            'admin' => false,
             'gambar'=>fake()->randomElement($gambarUrls),
             // 'username';
             // 'nama_lengkap';

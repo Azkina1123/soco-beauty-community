@@ -14,7 +14,7 @@
 
                 <div class="mb-4 mt-12">
                     <label for="username" class="font-bold"> Username </label>
-                    @include('components.text-field', [
+                    @include('components.input', [
                         'name' => 'username',
                         'placeholder' => 'Enter Username',
                         'type' => 'text',
@@ -24,7 +24,7 @@
 
                 <div class="mb-4">
                     <label for="password" class="font-bold"> Password </label>
-                    @include('components.text-field', [
+                    @include('components.input', [
                         'name' => 'password',
                         'placeholder' => 'Enter Password',
                         'type' => 'password',

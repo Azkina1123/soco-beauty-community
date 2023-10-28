@@ -14,7 +14,7 @@
             @include('components.text-btn', ['label' => 'Skincares', 'route' => route('skincares')])
         </div>
 
-        <a href=""
+        <a href="{{ route('profile') }}"
             class="flex justify-end items-center text-light-slate-grey hover:text-cool-blue-hover focus:text-cool-blue-click">
             <p class="">Username</p>
             <div class="rounded-full bg-black w-12 h-12 ms-5"></div>

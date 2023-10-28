@@ -44,3 +44,21 @@ Route::get('/skincares', function () {
     ]);
 })->name("skincares");
 
+Route::get('/profile', function () {
+    return view('user/profile', [
+        "title" => "Profile | Soco - Beauty Community"
+    ]);
+})->name("profile");
+Route::get('/profile/edit', function () {
+    return view('user/edit-profile', [
+        "title" => "Edit Profile | Soco - Beauty Community"
+    ]);
+})->name("edit-profile");
+
+Route::get('/reviews/{id}', function ($id) {
+    return view('user/detail-review', [
+        "title" => "Detail Review | Soco - Beauty Community",
+        "id" => $id
+    ]);
+})->name("detail-review");
+
