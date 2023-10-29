@@ -21,43 +21,48 @@ Route::get('/', function () {
 
 Route::get('/login', function () {
     return view('auth/login', [
-        "title" => "Login | Soco - Beauty Community"
+        "title" => "Login"
     ]);
 })->name("login");
 
 Route::get('/sign-up', function () {
     return view('auth/sign-up', [
-        "title" => "Sign Up | Soco - Beauty Community"
+        "title" => "Sign Up"
     ]);
 })->name("sign-up");
 
 // -=- USER =========================================================================
 Route::get('/home', function () {
     return view('user/home', [
-        "title" => "Home | Soco - Beauty Community"
+        "title" => "Home"
     ]);
 })->name("home");
+Route::get('/add-review/select-skincare', function () {
+    return view('user/select-skincare', [
+        "title" => "Select Skincare"
+    ]);
+})->name("select-skincare");
 
 Route::get('/skincares', function () {
     return view('user/Skincares', [
-        "title" => "Skincares | Soco - Beauty Community"
+        "title" => "Skincares"
     ]);
 })->name("skincares");
 
 Route::get('/profile', function () {
     return view('user/profile', [
-        "title" => "Profile | Soco - Beauty Community"
+        "title" => "Profile"
     ]);
 })->name("profile");
 Route::get('/profile/edit', function () {
     return view('user/edit-profile', [
-        "title" => "Edit Profile | Soco - Beauty Community"
+        "title" => "Edit Profile"
     ]);
 })->name("edit-profile");
 
 Route::get('/reviews/{id}', function ($id) {
     return view('user/detail-review', [
-        "title" => "Detail Review | Soco - Beauty Community",
+        "title" => "Detail Review",
         "id" => $id
     ]);
 })->name("detail-review");

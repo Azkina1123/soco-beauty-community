@@ -9,7 +9,10 @@
         @include('components.sidebar-reviews')
 
         <div class="w-[75%] py-2 px-2 flex flex-col">
-            @include('components.outlined-btn', ['label' => 'Add New Review +', 'route' => route('home')])
+            @include('components.outlined-btn', [
+                'label' => 'Add New Review +',
+                'route' => route('select-skincare'),
+            ])
 
             {{-- reviews --}}
             <div class="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-5 mt-5">

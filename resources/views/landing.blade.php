@@ -44,7 +44,7 @@
 
     {{-- popular products --}}
     <div class="px-14">
-        <h1 class="font-bold text-2xl">Popular Products</h1>
+        <h1 class="font-bold text-2xl text-medium-forest-green">Popular Products</h1>
         <p class="text-light-slate-grey">The most reviewed products by users today. </p>
 
         <div class="grid grid-cols-6 gap-5 h-[500px] py-5">
@@ -63,7 +63,7 @@
 
     {{-- recent review --}}
     <div class="px-14 py-10">
-        <h1 class="font-bold text-2xl">Recent Reviews</h1>
+        <h1 class="font-bold text-2xl text-medium-forest-green">Recent Reviews</h1>
         <p class="text-light-slate-grey">The most reviewed products by users today. </p>
 
         <div class="grid grid-cols-3 gap-5 h-[300px] py-5">

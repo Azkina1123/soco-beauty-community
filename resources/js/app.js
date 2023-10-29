@@ -11,6 +11,28 @@ function enabledBtn(btn, route) {
     btn.setAttribute("href", route);
 }
 
+// ketika di halaman home/reviews
+if (window.location.pathname == "/home") {
+    var menuHome = document.querySelector(".menu-home .text-btn");
+    menuHome.classList.add("font-bold");
+    menuHome.classList.replace("text-light-slate-grey", "text-cool-blue")
+}
+
+// ketika di halaman skincares
+if (window.location.pathname == "/skincares") {
+    var menuHome = document.querySelector(".menu-skincares .text-btn");
+    menuHome.classList.add("font-bold");
+    menuHome.classList.replace("text-light-slate-grey", "text-cool-blue")
+}
+
+// ketika di halaman profile
+if (window.location.pathname == "/profile") {
+    var menuHome = document.querySelector(".menu-profile");
+    menuHome.classList.add("font-bold");
+    menuHome.classList.replace("text-light-slate-grey", "text-cool-blue")
+}
+
+
 // ketika di halaman detail-reviews
 if (window.location.pathname.includes("/reviews/")) {
     var commentTextarea = document.getElementsByClassName("textarea")[0];
@@ -35,6 +57,7 @@ if (window.location.pathname.includes("/reviews/")) {
     })
 
 }
+
 
 
 

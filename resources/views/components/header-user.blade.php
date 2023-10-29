@@ -5,17 +5,16 @@
     </div>
 
     <div class="w-[50%] flex justify-end items-center">
-        <div class="me-5">
-
+        <div class="menu-home me-5">
             @include('components.text-btn', ['label' => 'Home', 'route' => route('home')])
-
         </div>
-        <div class="me-5">
+
+        <div class="menu-skincares me-5">
             @include('components.text-btn', ['label' => 'Skincares', 'route' => route('skincares')])
         </div>
 
         <a href="{{ route('profile') }}"
-            class="flex justify-end items-center text-light-slate-grey hover:text-cool-blue-hover focus:text-cool-blue-click">
+            class="menu-profile flex justify-end items-center text-light-slate-grey hover:text-cool-blue-hover focus:text-cool-blue-click">
             <p class="">Username</p>
             <div class="rounded-full bg-black w-12 h-12 ms-5"></div>
         </a>
