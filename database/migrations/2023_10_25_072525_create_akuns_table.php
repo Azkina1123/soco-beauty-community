@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string("username")->unique();
             $table->string("nama_lengkap");
             $table->boolean("admin");
+            $table->boolean("password");
             $table->string("gambar");
             $table->timestamps();
         });
