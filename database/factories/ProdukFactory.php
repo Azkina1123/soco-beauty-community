@@ -39,11 +39,11 @@ class ProdukFactory extends Factory
 
         ];
         $deskripsiProd = [
-            'mengobati jerawat dan bintik-bintik jerawat.',
-            'mencerahkan atau memutihkan kulit dengan mengurangi hiperpigmentasi atau noda gelap.',
-            'mengurangi tanda-tanda penuaan kulit, seperti kerutan dan garis halus.',
-            'memberikan efek mencerahkan dan kilau pada kulit wajah.',
-            'mengangkat sel-sel kulit mati, membersihkan pori-pori, dan meningkatkan tekstur kulit.'
+            'Mengobati jerawat dan bintik-bintik jerawat.',
+            'Mencerahkan atau memutihkan kulit dengan mengurangi hiperpigmentasi atau noda gelap.',
+            'Mengurangi tanda-tanda penuaan kulit, seperti kerutan dan garis halus.',
+            'Memberikan efek mencerahkan dan kilau pada kulit wajah.',
+            'Mengangkat sel-sel kulit mati, membersihkan pori-pori, dan meningkatkan tekstur kulit.'
         ];
 
 
@@ -60,18 +60,18 @@ class ProdukFactory extends Factory
             'JAFRA Indonesia',
         ];
         $gambarProd = [
-            asset('assets/skincare1.jpeg'),
-            asset('assets/skincare2.jpeg'),
-            asset('assets/skincare3.jpeg'),
-            asset('assets/skincare4.jpg'),
-            asset('assets/skincare4.jpg'),
+            'skincare-1.jpeg',
+            'skincare-2.jpeg',
+            'skincare-3.jpeg',
+            'skincare-4.jpeg',
+            'skincare-5.jpeg'
         ];
         return [
             'nama_produk' => fake()->randomElement($namaProd),
             'jenis' => fake()->randomElement($jenisProd),
-            'deskripsi'=>fake()->randomElement($deskripsiProd),
-            'merk'=>fake()->randomElement($merkProd),
-            'gambar'=>fake()->randomElement($gambarProd),
+            'deskripsi' => fake()->randomElement($deskripsiProd),
+            'merk' => fake()->randomElement($merkProd),
+            'gambar' => fake()->randomElement($gambarProd),
 
             //
         ];

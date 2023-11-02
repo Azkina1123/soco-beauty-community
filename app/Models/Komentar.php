@@ -14,12 +14,14 @@ class Komentar extends Model
     protected $fillable = ["isi", "review_id", "akun_id"];
 
     // 1 komentar hanya bisa berada pada 1 review
-    public function review(): BelongsTo {
+    public function review(): BelongsTo
+    {
         return $this->belongsTo(Review::class);
     }
 
     // 1 komentar hanya bisa ditulis oleh 1 akun
-    public function akun(): BelongsTo {
+    public function akun(): BelongsTo
+    {
         return $this->belongsTo(Akun::class);
     }
 }
