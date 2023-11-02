@@ -1,7 +1,7 @@
 @if (isset($color))
-    <a href="{{ $route }}"
-        class="text-btn text-light-slate-grey px-3 py-2 hover:text-medium-forest-green text-center">{{ $label }}</a>
+    <button type="{{ $type }}"
+        class="w-full h-fit text-btn text-light-slate-grey px-3 py-2 hover:text-medium-forest-green text-center">{{ $label }}</button>
 @else
-    <a href="{{ $route }}"
-        class="text-btn text-light-slate-grey px-3 py-2 hover:text-cool-blue text-center">{{ $label }}</a>
+    <button type="{{ $type }}"
+        class="w-full h-fit text-btn text-light-slate-grey px-3 py-2 hover:text-cool-blue text-center">{{ $label }}</button>
 @endif

@@ -1,26 +1,35 @@
-<div class="w-[25%] px-2">
+<div class="w-[25%] pe-2">
 
     <div class="mt-5 flex flex-col items-start">
 
-        @include('components.text-btn', [
-            'label' => 'My Profile',
-            'route' => route('profile'),
-            'color' => 'green',
-        ])
-        @include('components.text-btn', [
-            'label' => 'Edit Profile',
-            'route' => route('edit-profile'),
-            'color' => 'green',
-        ])
+        <a href="{{ route('user.profile') }}">
+            @include('components.text-btn', [
+                'label' => 'My Profile',
+                'type' => 'button',
+                'color' => 'green',
+            ])
+
+        </a>
+
+        <a href="{{ route('user.profile.edit') }}">
+            @include('components.text-btn', [
+                'label' => 'Edit Profile',
+                'type' => 'button',
+                'color' => 'green',
+            ])
+
+        </a>
 
         <div class=" w-full p-3">
             <hr class="border">
 
         </div>
-        @include('components.text-btn', [
-            'label' => 'Logout',
-            'route' => route('landing'),
-            'color' => 'green',
-        ])
+        <a href="{{ route('logout') }}">
+            @include('components.text-btn', [
+                'label' => 'Logout',
+                'type' => 'button',
+                'color' => 'green',
+            ])
+        </a>
     </div>
 </div>

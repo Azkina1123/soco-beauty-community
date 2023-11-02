@@ -15,9 +15,12 @@ export default {
                 "medium-turquoise": "#56cfe2",
                 "oasis": "#f8efcf",
                 "cyan-blue": "#90b4e1",
-                "light-plum": "	#b04e93",
+                "light-plum": "#b04e93",
                 "medium-forest-green": "#39712a",
                 "light-slate-grey": "#6c7b88",
+
+                "success": "#39712a",
+                "error": "#960000",
             },
             backgroundColor: {
                 "cool-blue": "#3d86b8",
@@ -26,9 +29,13 @@ export default {
                 "medium-turquoise": "#56cfe2",
                 "oasis": "#f8efcf",
                 "cyan-blue": "#90b4e1",
-                "light-plum": "	#b04e93",
+                "light-plum": "#b04e93",
                 "medium-forest-green": "#39712a",
                 "light-slate-grey": "#6c7b88",
+
+                "success": "#edf7ee",
+                "error": "#f4e5e5"
+
             },
             borderColor: {
                 "cool-blue": "#3d86b8",
@@ -37,9 +44,12 @@ export default {
                 "medium-turquoise": "#56cfe2",
                 "oasis": "#f8efcf",
                 "cyan-blue": "#90b4e1",
-                "light-plum": "	#b04e93",
+                "light-plum": "#b04e93",
                 "medium-forest-green": "#39712a",
                 "light-slate-grey": "#6c7b88",
+
+                "success": "#39712a",
+                "error": "#960000"
             },
 
         },

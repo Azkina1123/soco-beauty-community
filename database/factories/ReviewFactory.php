@@ -2,8 +2,8 @@
 
 namespace Database\Factories;
 
-use App\Models\Akun;
 use App\Models\Produk;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -28,7 +28,7 @@ class ReviewFactory extends Factory
                 "Saya merasa Cleansing Oil ini agak sulit dibilas, dan meninggalkan lapisan minyak di wajah saya. Mungkin perlu beberapa kali pencucian tambahan.",
                 "Saya mencoba Sheet Mask ini sebelum acara penting, dan hasilnya luar biasa! Kulit saya terlihat bersinar dan terhidrasi dengan baik. Sangat cocok untuk perawatan wajah sebelum acara khusus."
             ]),
-            "akun_id" => Akun::all()->random()->id,
+            "user_id" => User::all()->random()->id,
             "produk_id" => Produk::all()->random()->id,
         ];
     }

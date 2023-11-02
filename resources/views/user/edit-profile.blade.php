@@ -7,7 +7,7 @@
         {{-- sidebar --}}
         @include('components.sidebar-profile')
 
-        <div class="flex flex-col justify-center w-full mb-10">
+        <div class="flex flex-col justify-center py-2 ps-3 w-full mb-10">
             <form action="" class="w-[50%] self-center">
                 <div class="flex flex-col items-center justify-center mb-4">
                     <div class="rounded-full bg-cyan-blue bg-opacity-30 w-20 h-20 text-2xl flex justify-center items-center">
@@ -23,6 +23,7 @@
                         'name' => 'username',
                         'placeholder' => 'Enter Username',
                         'type' => 'text',
+                        'required' => true,
                     ])
 
                 </div>
@@ -32,6 +33,7 @@
                         'name' => 'fullname',
                         'placeholder' => 'Enter Full Name',
                         'type' => 'text',
+                        'required' => true,
                     ])
 
                 </div>
@@ -42,6 +44,7 @@
                         'name' => 'password',
                         'placeholder' => 'Enter Password',
                         'type' => 'password',
+                        'required' => true,
                     ])
                 </div>
 
@@ -51,16 +54,17 @@
                         'name' => 'confirm',
                         'placeholder' => 'Enter Confirm Password',
                         'type' => 'password',
+                        'required' => true,
                     ])
                 </div>
 
 
                 <div class="grid grid-cols-2 gap-3 mt-8">
 
-                    @include('components.elevated-btn', ['label' => 'Cancel', 'route' => route('profile')])
+                    @include('components.elevated-btn', ['label' => 'Cancel', 'type' => 'button'])
                     @include('components.outlined-btn', [
                         'label' => 'Edit',
-                        'route' => route('edit-profile'),
+                        'type' => 'submit',
                     ])
                 </div>
 

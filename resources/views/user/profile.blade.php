@@ -9,7 +9,7 @@
         @include('components.sidebar-profile')
 
         {{-- detail profile --}}
-        <div class="w-[75%] h-fit py-2 px-2 grid grid-cols-4">
+        <div class="w-[75%] h-fit py-2 ps-3 grid grid-cols-4">
             <div class="flex justify-center items-center">
                 <div class="rounded-full bg-black w-24 h-24 me-5"></div>
             </div>

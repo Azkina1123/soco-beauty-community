@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Models\Akun;
+use App\Models\User;
 use App\Models\Review;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -31,7 +31,7 @@ class KomentarFactory extends Factory
 
             ]),
             "review_id" => Review::all()->random(),
-            "akun_id" => Akun::all()->random()
+            "user_id" => User::all()->random()
         ];
     }
 }

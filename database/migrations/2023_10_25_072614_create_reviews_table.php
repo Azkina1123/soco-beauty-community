@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('reviews', function (Blueprint $table) {
             $table->id();
             $table->string("isi");
-            $table->foreignId("akun_id")->constrained("akuns");
+            $table->foreignId("user_id")->constrained("users");
             $table->foreignId("produk_id")->constrained("produks");
             $table->timestamps();
         });

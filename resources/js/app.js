@@ -4,6 +4,8 @@ function disabledBtn(btn) {
     btn.removeAttribute("href");
     btn.classList.replace("bg-cool-blue", "bg-light-slate-grey")
     btn.classList.replace("hover:bg-cool-blue-hover", "hover:bg-light-slate-grey")
+
+    btn.disbaled = true;
 }
 function enabledBtn(btn, route) {
     btn.classList.replace("bg-light-slate-grey", "bg-cool-blue")

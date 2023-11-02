@@ -5,7 +5,7 @@
     <div class="px-14 flex mb-10">
         @include('components.sidebar-reviews')
 
-        <div class="w-[75%] py-2 px-5 flex flex-col">
+        <div class="w-[75%] py-2 ps-3 flex flex-col">
             @include('components.review-account')
 
             <p class="mt-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati itaque alias praesentium
@@ -19,7 +19,7 @@
                 voluptate soluta nostrum sit id molestias vero!</p>
 
             {{-- skincare yang direview --}}
-            <a href="{{ route('skincares') }}"
+            <a href="{{ route('user.skincares') }}"
                 class="border border-medium-forest-green grid grid-cols-4 h-[150px] rounded-md gap-5 mt-3">
                 {{-- gambar skincare --}}
                 <div class="bg-light-slate-grey rounded-s-md">
@@ -43,17 +43,17 @@
 
                 <div class="w-full">
                     <p class="text-sm text-light-slate-grey">Username</p>
-                    <form action="">
+                    <form action="" class="flex flex-col">
                         @include('components.textarea', [
                             'name' => 'comment',
                             'placeholder' => 'Insert your comment here',
                         ])
-                        <div class="flex justify-end mt-1">
+
+                        <div class="w-[90px] self-end mt-2">
                             @include('components.elevated-btn', [
                                 'label' => 'Submit',
-                                'route' => route('detail-review', $id),
+                                'type' => 'button',
                             ])
-
                         </div>
                     </form>
                 </div>

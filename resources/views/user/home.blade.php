@@ -8,17 +8,19 @@
         {{-- sidebar --}}
         @include('components.sidebar-reviews')
 
-        <div class="w-[75%] py-2 px-2 flex flex-col">
-            @include('components.outlined-btn', [
-                'label' => 'Add New Review +',
-                'route' => route('select-skincare'),
-            ])
+        <div class="w-[75%] py-2 ps-3 flex flex-col">
+            <a href="{{ route('user.review.add.select-skincare') }}">
+                @include('components.outlined-btn', [
+                    'label' => 'Add New Review +',
+                    'type' => 'button',
+                ])
+            </a>
 
             {{-- reviews --}}
             <div class="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-5 mt-5">
 
                 @for ($i = 0; $i < 5; $i++)
-                    @include('components.review')
+                    @include('components.review-card')
                 @endfor
             </div>
 

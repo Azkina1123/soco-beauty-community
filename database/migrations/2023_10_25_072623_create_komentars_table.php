@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->text("isi");
             $table->foreignId("review_id")->constrained("reviews");
-            $table->foreignId("akun_id")->constrained("akuns");
+            $table->foreignId("user_id")->constrained("users");
             $table->timestamps();
         });
     }

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,51 +20,56 @@ Route::get('/', function () {
     ]);
 })->name("landing");
 
-Route::get('/login', function () {
-    return view('auth/login', [
-        "title" => "Login"
-    ]);
-})->name("login");
+// AuthController --------------------------------------------------------------
+Route::controller(AuthController::class)->group(function () {
+    Route::get("/login", "showLogin")->name("login");
+    Route::post("/login/action", "loginAction")->name("login.action");
 
-Route::get('/sign-up', function () {
-    return view('auth/sign-up', [
-        "title" => "Sign Up"
-    ]);
-})->name("sign-up");
+    Route::get("/sign-up", "showSignUp")->name("sign-up");
+    Route::post("/sign-up/action", "signUpAction")->name("sign-up.action");
 
-// -=- USER =========================================================================
-Route::get('/home', function () {
-    return view('user/home', [
-        "title" => "Home"
-    ]);
-})->name("home");
-Route::get('/add-review/select-skincare', function () {
-    return view('user/select-skincare', [
-        "title" => "Select Skincare"
-    ]);
-})->name("select-skincare");
+    Route::get("/logout", "logout")->name("logout");
+});
 
-Route::get('/skincares', function () {
-    return view('user/Skincares', [
-        "title" => "Skincares"
-    ]);
-})->name("skincares");
 
-Route::get('/profile', function () {
-    return view('user/profile', [
-        "title" => "Profile"
-    ]);
-})->name("profile");
-Route::get('/profile/edit', function () {
-    return view('user/edit-profile', [
-        "title" => "Edit Profile"
-    ]);
-})->name("edit-profile");
+Route::middleware("auth")->group(function () {
 
-Route::get('/reviews/{id}', function ($id) {
-    return view('user/detail-review', [
-        "title" => "Detail Review",
-        "id" => $id
-    ]);
-})->name("detail-review");
+    // -=- USER =========================================================================
 
+    Route::get('/home', function () {
+        return view('user/home', [
+            "title" => "Home"
+        ]);
+    })->name("user.home");
+
+    Route::get('/add-review/select-skincare', function () {
+        return view('user/select-skincare', [
+            "title" => "Select Skincare"
+        ]);
+    })->name("user.review.add.select-skincare");
+
+    Route::get('/skincares', function () {
+        return view('user/Skincares', [
+            "title" => "Skincares"
+        ]);
+    })->name("user.skincares");
+
+    Route::get('/profile', function () {
+        return view('user/profile', [
+            "title" => "Profile"
+        ]);
+    })->name("user.profile");
+
+    Route::get('/profile/edit', function () {
+        return view('user/edit-profile', [
+            "title" => "Edit Profile"
+        ]);
+    })->name("user.profile.edit");
+
+    Route::get('/reviews/{id}', function ($id) {
+        return view('user/detail-review', [
+            "title" => "Detail Review",
+            "id" => $id
+        ]);
+    })->name("user.review");
+});

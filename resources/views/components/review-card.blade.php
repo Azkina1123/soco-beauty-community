@@ -1,4 +1,4 @@
-                    <div class="p-3 border border-medium-forest-green rounded-md">
+                    <div class="p-3 border border-medium-forest-green border-opacity-50 rounded-md">
 
                         @include('components.review-account')
 
@@ -17,11 +17,16 @@
                                 </p>
 
                                 <div class="flex flex-row justify-between items-center">
-                                    <p class="text-light-slate-grey">12 Comments</p>
-                                    @include('components.text-btn', [
-                                        'label' => 'See More',
-                                        'route' => route('detail-review', ['id' => 1]),
-                                    ])
+                                    <p class="text-light-slate-grey w-[50%]">12 Comments</p>
+                                    <a href="{{ route('user.review', ['id' => 1]) }}">
+
+
+                                        @include('components.text-btn', [
+                                            'label' => 'See More',
+                                            'type' => 'button',
+                                            // 'route' => route('detail-review', ['id' => 1]),
+                                        ])
+                                    </a>
                                 </div>
 
                             </div>

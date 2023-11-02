@@ -7,16 +7,20 @@
         {{-- sidebar --}}
         @include('components.sidebar-reviews')
 
-        <div class="w-[75%] px-2 flex flex-col">
+        <div class="w-[75%] py-2 ps-3 flex flex-col">
             <div class="flex justify-between">
                 <h1 class="text-2xl font-bold text-medium-forest-green mb-2">Select Skincare to Review</h1>
-                @include('components.elevated-btn', ['label' => 'Next', 'route' => '#'])
+
+                <a href="">
+                    @include('components.elevated-btn', ['label' => 'Next', 'type' => 'button'])
+                </a>
             </div>
 
             @include('components.input', [
                 'name' => 'searchSkincare',
                 'placeholder' => 'Enter skincare name here',
                 'type' => 'search',
+                'required' => false,
             ])
 
             {{-- pilihan skincare --}}

@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
 /**
@@ -17,12 +18,25 @@ class UserFactory extends Factory
      */
     public function definition(): array
     {
+        $users = [
+            "user-1.jpg",
+            "user-2.jpg",
+            "user-3.jpg",
+            "user-4.jpg",
+            "user-5.jpg",
+            "user-6.jpg",
+            "user-7.jpg",
+            "user-8.jpg",
+            "user-9.jpg",
+            "user-10.jpg",
+        ];
+
         return [
-            'name' => fake()->name(),
-            'email' => fake()->unique()->safeEmail(),
-            'email_verified_at' => now(),
-            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
-            'remember_token' => Str::random(10),
+            'username' => fake()->userName(),
+            'nama_lengkap' => fake()->name(),
+            'admin' => false,
+            'password' => Hash::make("1"),
+            'gambar' => fake()->randomElement($users),
         ];
     }
 
