@@ -22,16 +22,18 @@ class AuthController extends Controller
     {
         $data = [
             "username" => $request->username,
-            "password" => $request->password
+            "password" => $request->password,
         ];
 
         // jika berhasil login
         if (Auth::attempt($data)) {
-            $isAdmin = User::where("username", $request->username)->first()->admin;
+            $user = User::where($request->username);
+            $isAdmin = Auth::user();
+            // $isAdmin = User::where("username", $request->username)->first()->admin;
 
             // buka dashboard admin
-            if ($isAdmin) {
-                return redirect("");
+            if ($isAdmin->admin === 1) {
+                return redirect(route("admin.home"));
             }
 
             // buka home user

@@ -72,4 +72,12 @@ Route::middleware("auth")->group(function () {
             "id" => $id
         ]);
     })->name("user.review");
+
+     // -=- ADMIN =========================================================================
+     Route::get('/admin/home', function () {
+        return view('admin/home', [
+            "title" => "Home"
+        ]);
+    })->name("admin.home");
+
 });
