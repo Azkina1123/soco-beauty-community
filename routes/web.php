@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\User;
+use App\Models\Produk;
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
@@ -79,5 +81,25 @@ Route::middleware("auth")->group(function () {
             "title" => "Home"
         ]);
     })->name("admin.home");
+
+    Route::get('/admin/account', function () {
+        return view('admin/account', [
+            "account" =>User::all(),
+            "title" => "Account"
+        ]);
+    })->name("admin.account");
+
+    Route::get('/admin/product', function () {
+        return view('admin/product', [
+            "product" =>Produk::all(),
+            "title" => "Product"
+        ]);
+    })->name("admin.product");
+
+    Route::get('/admin/review', function () {
+        return view('admin/review', [
+            "title" => "Review"
+        ]);
+    })->name("admin.review");
 
 });

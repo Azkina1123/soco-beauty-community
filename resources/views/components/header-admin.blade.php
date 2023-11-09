@@ -1,11 +1,11 @@
 <header class="w-full flex justify-between items-center px-14 py-5">
 
     <div class="w-[25%] font-bold text-xl">
-        <a href="{{ route('user.home') }}"> SOCO </a>
+        <a href="{{ route('admin.home') }}"> SOCO - ADMIN </a>
     </div>
 
     <div class="w-[50%] flex justify-end items-center">
-        <a href="{{ route('admin.home') }}" class="menu-home me-5">
+        {{-- <a href="{{ route('admin.home') }}" class="menu-home me-5">
             @include('components.text-btn', ['label' => 'Home', 'type' => 'button'])
         </a>
 
@@ -19,7 +19,7 @@
 
         <a class="menu-skincares me-5">
             @include('components.text-btn', ['label' => 'Review', 'type' => 'button'])
-        </a>
+        </a> --}}
 
         <a href="{{ route('user.profile') }}"
             class="menu-profile flex justify-end items-center text-light-slate-grey hover:text-cool-blue-hover focus:text-cool-blue-click">
