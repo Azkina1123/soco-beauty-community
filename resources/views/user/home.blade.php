@@ -9,6 +9,7 @@
         @include('components.sidebar-reviews')
 
         <div class="w-[75%] py-2 ps-3 flex flex-col">
+
             <a href="{{ route('user.review.add.select-skincare') }}">
                 @include('components.outlined-btn', [
                     'label' => 'Add New Review +',
@@ -16,12 +17,16 @@
                 ])
             </a>
 
-            {{-- reviews --}}
-            <div class="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-5 mt-5">
+            @if (empty($reviews['data']))
+                <p class="text-center mt-16">No data has been added yet.</p>
+            @endif
 
-                @for ($i = 0; $i < 5; $i++)
-                    @include('components.review-card')
-                @endfor
+            {{-- reviews --}}
+            <div class="grid lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-1 gap-5 mt-5">
+
+                @foreach ($reviews['data'] as $review)
+                    @include('components.review-card', ['review' => $review])
+                @endforeach
             </div>
 
         </div>

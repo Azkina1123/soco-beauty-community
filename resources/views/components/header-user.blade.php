@@ -13,7 +13,7 @@
             @include('components.text-btn', ['label' => 'Skincares', 'type' => 'button'])
         </a>
 
-        <a href="{{ route('user.profile') }}"
+        <a href=" {{ route('user.profile', Auth::user()->username) }}"
             class="menu-profile flex justify-end items-center text-light-slate-grey hover:text-cool-blue-hover focus:text-cool-blue-click">
             <p class="">{{ Auth::user()->username }}</p>
             <div class="rounded-full bg-black w-12 h-12 ms-5"></div>
