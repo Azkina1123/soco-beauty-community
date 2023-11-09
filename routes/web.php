@@ -1,6 +1,9 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\UserController;
+use App\Models\Review;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -36,48 +39,52 @@ Route::middleware("auth")->group(function () {
 
     // -=- USER =========================================================================
 
-    Route::get('/home', function () {
-        return view('user/home', [
-            "title" => "Home"
-        ]);
-    })->name("user.home");
+    // --- ReviewController -----------------------------------------------------------
+    Route::controller(ReviewController::class)->group(function () {
+        Route::get("/user/home", "index")->name("user.home");
+        Route::get("/user/reviews/my-reviews", "myReviews")->name("user.my-reviews");
+    });
 
-    Route::get('/add-review/select-skincare', function () {
+    // --- UserController -------------------------------------------------------------
+    Route::controller(UserController::class)->group(function () {
+        Route::get("/user/profile/{username}", "index")->name("user.profile");
+    });
+
+    Route::get('/user/add-review/select-skincare', function () {
         return view('user/select-skincare', [
             "title" => "Select Skincare"
         ]);
     })->name("user.review.add.select-skincare");
 
-    Route::get('/skincares', function () {
+    Route::get('/user/skincares', function () {
         return view('user/Skincares', [
             "title" => "Skincares"
         ]);
     })->name("user.skincares");
 
-    Route::get('/profile', function () {
-        return view('user/profile', [
-            "title" => "Profile"
-        ]);
-    })->name("user.profile");
+    // Route::get('/user/profile', function () {
+    //     return view('user/profile', [
+    //         "title" => "Profile"
+    //     ]);
+    // })->name("user.profile");
 
-    Route::get('/profile/edit', function () {
+    Route::get('/user/profile/edit', function () {
         return view('user/edit-profile', [
             "title" => "Edit Profile"
         ]);
     })->name("user.profile.edit");
 
-    Route::get('/reviews/{id}', function ($id) {
+    Route::get('/user/reviews/{id}', function ($id) {
         return view('user/detail-review', [
             "title" => "Detail Review",
             "id" => $id
         ]);
     })->name("user.review");
 
-     // -=- ADMIN =========================================================================
-     Route::get('/admin/home', function () {
+    // -=- ADMIN =========================================================================
+    Route::get('/admin/home', function () {
         return view('admin/home', [
             "title" => "Home"
         ]);
     })->name("admin.home");
-
 });

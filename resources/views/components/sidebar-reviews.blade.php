@@ -10,7 +10,7 @@
 
             <div class="mt-5 flex flex-col items-start">
 
-                <a href="{{ route('user.home') }}">
+                <a href="{{ route('user.home') }}" class="sub-menu all">
                     @include('components.text-btn', [
                         'label' => 'All',
                         'type' => 'button',
@@ -18,14 +18,14 @@
                     ])
 
                 </a>
-                <a href="">
+                <a href="{{ route('user.my-reviews') }}" class="sub-menu my-reviews">
                     @include('components.text-btn', [
                         'label' => 'My Reviews',
                         'type' => 'button',
                         'color' => 'green',
                     ])
-
                 </a>
+
                 <div class=" w-full p-3">
                     <hr class="border">
 

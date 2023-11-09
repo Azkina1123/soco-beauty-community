@@ -13,22 +13,48 @@ function enabledBtn(btn, route) {
     btn.setAttribute("href", route);
 }
 
-// ketika di halaman home/reviews
-if (window.location.pathname == "/home") {
+var route = window.location.pathname;
+
+// ketika di halaman home
+if (route.includes("/home") || route.includes("/reviews")) {
+
     var menuHome = document.querySelector(".menu-home .text-btn");
+    var subMenuMyReviews = document.querySelector(".sub-menu.my-reviews .text-btn");
+    var subMenuAll = document.querySelector(".sub-menu.all .text-btn");
+
+    // tekankan menu Home pada header
     menuHome.classList.add("font-bold");
     menuHome.classList.replace("text-light-slate-grey", "text-cool-blue")
+
+    if (route.includes("my-reviews")) {
+        // tekankan sub menu My Reviews pada sidebar
+        subMenuMyReviews.classList.add("font-bold");
+        subMenuMyReviews.classList.replace("text-light-slate-grey", "text-medium-forest-green");
+
+        // kembalikan tampilan sub menu my reviews ke keadaan awal
+        subMenuAll.classList.remove("font-bold");
+        subMenuAll.classList.replace("text-medium-forest-green", "text-light-slate-grey");
+
+    } else {
+        // tekankan sub menu All pada sidebar
+        subMenuAll.classList.add("font-bold");
+        subMenuAll.classList.replace("text-light-slate-grey", "text-medium-forest-green")
+
+        // kembalikan tampilan sub menu my reviews ke keadaan awal
+        subMenuMyReviews.classList.remove("font-bold");
+        subMenuMyReviews.classList.replace("text-medium-forest-green", "text-light-slate-grey");
+    }
 }
 
 // ketika di halaman skincares
-if (window.location.pathname == "/skincares") {
+if (route == "/skincares") {
     var menuHome = document.querySelector(".menu-skincares .text-btn");
     menuHome.classList.add("font-bold");
     menuHome.classList.replace("text-light-slate-grey", "text-cool-blue")
 }
 
 // ketika di halaman profile
-if (window.location.pathname == "/profile") {
+if (route == "/profile") {
     var menuHome = document.querySelector(".menu-profile");
     menuHome.classList.add("font-bold");
     menuHome.classList.replace("text-light-slate-grey", "text-cool-blue")
@@ -36,7 +62,7 @@ if (window.location.pathname == "/profile") {
 
 
 // ketika di halaman detail-reviews
-if (window.location.pathname.includes("/reviews/")) {
+if (route.includes("/reviews/")) {
     var commentTextarea = document.getElementsByClassName("textarea")[0];
     var commentBtn = document.getElementsByClassName("elevated-btn")[0];
     var link = document.getElementsByClassName("elevated-btn")[0].getAttribute("href");

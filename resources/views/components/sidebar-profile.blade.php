@@ -2,7 +2,7 @@
 
     <div class="mt-5 flex flex-col items-start">
 
-        <a href="{{ route('user.profile') }}">
+        <a href="{{ route('user.profile', Auth::user()->username) }}">
             @include('components.text-btn', [
                 'label' => 'My Profile',
                 'type' => 'button',
