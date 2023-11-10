@@ -28,6 +28,21 @@
 
             {{-- kolom komentar --}}
             <h2 class="py-5 mt-5"> Comments ({{ count($review['komentar']) }})</h2>
+
+            @if (session('success'))
+                @include('components.alert', [
+                    'type' => 'success',
+                    'title' => 'SUCCESS',
+                    'content' => session('success'),
+                ])
+            @elseif (session('failed'))
+                @include('components.alert', [
+                    'type' => 'error',
+                    'title' => 'FAILED',
+                    'content' => session('failed'),
+                ])
+            @endif
+
             <div class="flex">
 
                 <div class="w-24 flex justify-center">
@@ -37,23 +52,24 @@
 
                 <div class="w-full">
                     <p class="text-sm text-light-slate-grey">{{ Auth::user()->username }}</p>
-                    <form action="" class="flex flex-col">
+                    <form action="{{ route('user.comments.addAction', $review['id']) }}" method="post"
+                        class="flex flex-col">
+                        @csrf
                         @include('components.textarea', [
-                            'name' => 'comment',
+                            'name' => 'isi',
                             'placeholder' => 'Insert your comment here',
+                            'required' => true,
                         ])
 
                         <div class="w-[90px] self-end mt-2">
                             @include('components.elevated-btn', [
                                 'label' => 'Submit',
-                                'type' => 'button',
+                                'type' => 'submit',
                             ])
                         </div>
                     </form>
                 </div>
             </div>
-
-
 
             {{-- daftar komentar --}}
             @foreach ($review['komentar'] as $komentar)
@@ -68,9 +84,21 @@
 
                     <div class="w-full">
                         <p class="text-sm text-light-slate-grey">{{ $komentar['user']['username'] }} •
-                            {{ date('d M Y h.i', strtotime($komentar['created_at'])) }} </p>
+                            {{ date('d M Y H.i', strtotime($komentar['created_at'])) }} </p>
                         <p>{{ $komentar['isi'] }}</p>
                     </div>
+
+                    @if ($komentar['user_id'] == Auth::user()->id)
+                        <a href="{{ route('user.comments.deleteAction', [
+                            'idReview' => $review['id'],
+                            'idComment' => $komentar['id'],
+                        ]) }}"
+                            onclick="return confirm('Are you sure you want to delete your comment?')">
+                            <button class="rounded-md bg-danger p-2 w-10 h-fit">
+                                <img src="{{ asset('assets/images/delete.svg') }}" alt="" class="">
+                            </button>
+                        </a>
+                    @endif
                 </div>
             @endforeach
 

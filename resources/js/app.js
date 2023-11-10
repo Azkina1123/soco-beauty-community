@@ -1,16 +1,17 @@
 import './bootstrap';
 
 function disabledBtn(btn) {
-    btn.removeAttribute("href");
+    // btn.removeAttribute("href");
     btn.classList.replace("bg-cool-blue", "bg-light-slate-grey")
     btn.classList.replace("hover:bg-cool-blue-hover", "hover:bg-light-slate-grey")
 
-    btn.disbaled = true;
+    // btn.disbaled = true;
 }
-function enabledBtn(btn, route) {
+function enabledBtn(btn) {
     btn.classList.replace("bg-light-slate-grey", "bg-cool-blue")
     btn.classList.replace("hover:bg-light-slate-grey", "hover:bg-cool-blue-hover")
-    btn.setAttribute("href", route);
+    // btn.setAttribute("href", route);
+    // btn.disbaled = false;
 }
 
 var routePath = window.location.pathname;
@@ -59,6 +60,33 @@ if (routePath.includes("/home") || routePath.includes("/reviews")) {
     }
 }
 
+
+// ketika di halaman detail-reviews
+if (routePath.includes("/reviews/")) {
+    var commentTextarea = document.getElementsByClassName("textarea")[0];
+    var commentBtn = document.getElementsByClassName("elevated-btn")[0];
+    // var link = document.getElementsByClassName("elevated-btn")[0].getAttribute("href");
+
+    disabledBtn(commentBtn);
+
+    commentTextarea.addEventListener("keyup", function () {
+        if (document.getElementsByClassName("textarea")[0].value == "") {
+            disabledBtn(commentBtn);
+        } else {
+            enabledBtn(commentBtn)
+        }
+    })
+
+    commentTextarea.addEventListener("click", function () {
+        if (document.getElementsByClassName("textarea")[0].value == "") {
+            disabledBtn(commentBtn);
+        } else {
+            enabledBtn(commentBtn)
+        }
+    })
+
+}
+
 // ketika di halaman skincares
 if (routePath == "/skincares") {
     var menuHome = document.querySelector(".menu-skincares .text-btn");
@@ -74,30 +102,6 @@ if (routePath == "/profile") {
 }
 
 
-// ketika di halaman detail-reviews
-if (routePath.includes("/reviews/")) {
-    var commentTextarea = document.getElementsByClassName("textarea")[0];
-    var commentBtn = document.getElementsByClassName("elevated-btn")[0];
-    var link = document.getElementsByClassName("elevated-btn")[0].getAttribute("href");
-
-    disabledBtn(commentBtn);
-
-    commentTextarea.addEventListener("keyup", function () {
-        if (document.getElementsByClassName("textarea")[0].value == "") {
-            disabledBtn(commentBtn);
-        } else {
-            enabledBtn(commentBtn, link)
-        }
-    })
-    commentTextarea.addEventListener("click", function () {
-        if (document.getElementsByClassName("textarea")[0].value == "") {
-            disabledBtn(commentBtn);
-        } else {
-            enabledBtn(commentBtn, link)
-        }
-    })
-
-}
 
 
 

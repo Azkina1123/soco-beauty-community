@@ -10,7 +10,7 @@
                         'required' => false,
                     ])
                 </div>
-                <button class="bg-danger flex justify-center items-center px-2">
+                <button class="flex justify-center items-center px-2">
                     <img src="{{ asset('assets/images/search.svg') }}" alt="" class="w-8">
                 </button>
             </form>

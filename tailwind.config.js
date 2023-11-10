@@ -32,9 +32,10 @@ export default {
                 "light-plum": "#b04e93",
                 "medium-forest-green": "#39712a",
                 "light-slate-grey": "#6c7b88",
-
                 "success": "#edf7ee",
-                "error": "#f4e5e5"
+                "error": "#f4e5e5",
+
+                "danger": "#960000",
 
             },
             borderColor: {
@@ -47,7 +48,6 @@ export default {
                 "light-plum": "#b04e93",
                 "medium-forest-green": "#39712a",
                 "light-slate-grey": "#6c7b88",
-
                 "success": "#39712a",
                 "error": "#960000"
             },

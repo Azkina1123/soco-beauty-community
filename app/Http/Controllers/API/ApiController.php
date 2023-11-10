@@ -14,7 +14,7 @@ class ApiController extends Controller
 {
     public function getReviews()
     {
-        $reviews = Review::with([
+        $reviews = Review::orderBy("created_at", "desc")->with([
             "user" => function ($query) {
                 $query->select("id", "username", "gambar");
             }
@@ -90,7 +90,7 @@ class ApiController extends Controller
         return response()->json($response);
     }
 
-    public function getDetailsReview($id)
+    public function getDetailsReview($idReview)
     {
         $review = Review::with([
             "user" => function ($query) {
@@ -103,13 +103,13 @@ class ApiController extends Controller
         ])
             ->with([
                 "komentar" => function ($query) {
-                    $query->with([
+                    $query->orderBy("created_at", "desc")->with([
                         "user" => function ($query) {
                             $query->select("id", "username", "gambar");
                         }
                     ]);
                 }
-            ])->where("id", "=", $id)
+            ])->where("id", "=", $idReview)
             ->get();
 
         $response = [

@@ -3,6 +3,7 @@
 use App\Models\User;
 use App\Models\Produk;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\KomentarController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\UserController;
 use App\Models\Review;
@@ -47,18 +48,19 @@ Route::middleware("auth")->group(function () {
         Route::get("/user/reviews/{username}", "myReviews")->name("user.reviews.my");
         Route::get("/user/reviews", "searchReviews")->name("user.reviews.search");
         Route::get("/user/reviews/details/{id}", "show")->name("user.reviews.details");
-        // Route::get('/user/reviews/{id}', function ($id) {
-        //     return view('user/detail-review', [
-        //         "title" => "Detail Review",
-        //         "id" => $id
-        //     ]);
-        // })->name("user.review");
+    });
+
+    // --- KomentarController ---------------------------------------------------------
+    Route::controller(KomentarController::class)->group(function () {
+        Route::post("/user/reviews/details/{idReview}/comments/add", "store")->name("user.comments.addAction");
+        Route::get("/user/reviews/details/{idReview}/comments/delete/{idComment}", "delete")->name("user.comments.deleteAction");
     });
 
     // --- UserController -------------------------------------------------------------
     Route::controller(UserController::class)->group(function () {
         Route::get("/user/profile/{username}", "index")->name("user.profile");
     });
+
 
     Route::get('/user/add-review/select-skincare', function () {
         return view('user/select-skincare', [
@@ -97,14 +99,14 @@ Route::middleware("auth")->group(function () {
 
     Route::get('/admin/account', function () {
         return view('admin/account', [
-            "account" =>User::all(),
+            "account" => User::all(),
             "title" => "Account"
         ]);
     })->name("admin.account");
 
     Route::get('/admin/product', function () {
         return view('admin/product', [
-            "product" =>Produk::all(),
+            "product" => Produk::all(),
             "title" => "Product"
         ]);
     })->name("admin.product");
@@ -117,14 +119,14 @@ Route::middleware("auth")->group(function () {
 
     Route::get('/admin/account', function () {
         return view('admin/account', [
-            "account" =>User::all(),
+            "account" => User::all(),
             "title" => "Account"
         ]);
     })->name("admin.account");
 
     Route::get('/admin/product', function () {
         return view('admin/product', [
-            "product" =>Produk::all(),
+            "product" => Produk::all(),
             "title" => "Product"
         ]);
     })->name("admin.product");
@@ -134,5 +136,4 @@ Route::middleware("auth")->group(function () {
             "title" => "Review"
         ]);
     })->name("admin.review");
-
 });
