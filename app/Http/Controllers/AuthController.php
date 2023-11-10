@@ -82,8 +82,8 @@ class AuthController extends Controller
             // ubah nama gambar yg akan disimpan
             $namaGambar = $request->username . "." . $ekstensi;
 
-            // simpan gambar dgn memindahkan ke file assets/user/
-            $request->gambar->move("assets/user/", $namaGambar);
+            // simpan gambar dgn memindahkan ke file assets/users/
+            $request->gambar->move("assets/users/", $namaGambar);
         }
 
         // $validateData = $request->validate([

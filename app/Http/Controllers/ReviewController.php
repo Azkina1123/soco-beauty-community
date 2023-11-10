@@ -52,7 +52,7 @@ class ReviewController extends Controller
         // return $data;
         return view('user/detail-review', [
             "title" => "Detail Review",
-            "review" => $data[0]
+            "review" => $data["review"][0]
         ]);
     }
 }

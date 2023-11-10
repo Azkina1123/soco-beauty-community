@@ -25,7 +25,6 @@
             @endif
 
 
-
             {{-- reviews --}}
             <div class="grid lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-1 gap-5">
 

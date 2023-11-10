@@ -4,15 +4,12 @@
                         @include('components.review-account')
 
                         <div class="mt-3 flex flex-col">
-                            @php
-                                $gambarSkincare = $review['produk']['gambar'];
-                            @endphp
 
                             <a href="{{ route('user.skincares') }}"
                                 class="border border-oasis bg-oasis bg-opacity-20 rounded-md mt-3 flex p-2 h-[120px]">
                                 {{-- gambar skincare --}}
                                 <div class="bg-light-slate-grey rounded-md w-[30%] h-[100px] me-2 bg-cover"
-                                    style="background-image: url('{{ asset('assets/skincares/' . $gambarSkincare) }}')">
+                                    style="background-image: url('{{ asset('assets/skincares/' . $review['produk']['gambar']) }}')">
                                 </div>
 
                                 <div class="py-2 w-[70%]">
@@ -31,7 +28,8 @@
                                 </p>
 
                                 <div class="flex flex-row justify-between items-center">
-                                    <p class="text-light-slate-grey w-[50%]">12 Comments</p>
+                                    <p class="text-light-slate-grey w-[50%]">{{ count($review['komentar']) }} Comments
+                                    </p>
                                     <a href="{{ route('user.reviews.details', $review['id']) }}">
                                         @include('components.text-btn', [
                                             'label' => 'See More',

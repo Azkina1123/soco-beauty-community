@@ -27,15 +27,16 @@
             </a>
 
             {{-- kolom komentar --}}
-            <h2 class="py-5 mt-5"> Comments (3)</h2>
+            <h2 class="py-5 mt-5"> Comments ({{ count($review['komentar']) }})</h2>
             <div class="flex">
 
                 <div class="w-24 flex justify-center">
-                    <div class="rounded-full bg-black w-10 h-10"></div>
+                    <div class="rounded-full bg-black w-10 h-10 bg-cover bg-center"
+                        style="background-image: url('{{ asset('assets/users/' . Auth::user()->gambar) }}')"></div>
                 </div>
 
                 <div class="w-full">
-                    <p class="text-sm text-light-slate-grey">Username</p>
+                    <p class="text-sm text-light-slate-grey">{{ Auth::user()->username }}</p>
                     <form action="" class="flex flex-col">
                         @include('components.textarea', [
                             'name' => 'comment',
@@ -52,23 +53,29 @@
                 </div>
             </div>
 
-            <hr class="border my-5">
 
-            <div class="flex">
 
-                <div class="w-24 flex justify-center">
-                    <div class="rounded-full bg-black w-10 h-10"></div>
+            {{-- daftar komentar --}}
+            @foreach ($review['komentar'] as $komentar)
+                <hr class="border my-5">
+                <div class="flex">
+
+                    <div class="w-24 flex justify-center">
+                        <div class="rounded-full bg-black w-10 h-10 bg-cover bg-center"
+                            style="background-image: url('{{ asset('assets/users/' . $komentar['user']['gambar']) }}')">
+                        </div>
+                    </div>
+
+                    <div class="w-full">
+                        <p class="text-sm text-light-slate-grey">{{ $komentar['user']['username'] }} •
+                            {{ date('d M Y h.i', strtotime($komentar['created_at'])) }} </p>
+                        <p>{{ $komentar['isi'] }}</p>
+                    </div>
                 </div>
+            @endforeach
 
-                <div class="w-full">
-                    <p class="text-sm text-light-slate-grey">Username</p>
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Autem, enim! Lorem ipsum dolor sit amet
-                        consectetur adipisicing elit. Ex, nobis itaque quasi quia id perferendis quo architecto facilis
-                        inventore beatae?</p>
-                </div>
-            </div>
 
-            <hr class="border my-5">
+
         </div>
 
     </div>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Models\Komentar;
 use App\Models\Produk;
 use App\Models\Review;
 use App\Models\User;
@@ -11,7 +12,7 @@ use Illuminate\Support\Facades\Auth;
 
 class ApiController extends Controller
 {
-    public function getReview()
+    public function getReviews()
     {
         $reviews = Review::with([
             "user" => function ($query) {
@@ -21,7 +22,8 @@ class ApiController extends Controller
             "produk" => function ($query) {
                 $query->select("id", "nama_produk", "jenis", "gambar");
             }
-        ])->get();
+        ])->with("komentar")
+            ->get();
 
         $response = [
             "status" => "success",
@@ -31,7 +33,7 @@ class ApiController extends Controller
         return response()->json($response);
     }
 
-    public function getMyReview($username)
+    public function getMyReviews($username)
     {
         $id = User::where("username", $username)->first()->id;
         $reviews = Review::where("user_id", $id)
@@ -43,7 +45,8 @@ class ApiController extends Controller
                 "produk" => function ($query) {
                     $query->select("id", "nama_produk", "jenis", "gambar");
                 }
-            ])->get();
+            ])->with("komentar")
+            ->get();
 
         $response = [
             "status" => "success",
@@ -53,7 +56,7 @@ class ApiController extends Controller
         return response()->json($response);
     }
 
-    public function getSearchReview(Request $request)
+    public function getSearchReviews(Request $request)
     {
         // cari produk berdasarkan nama produk || jenis produk
         $produks = Produk::select("id")
@@ -76,7 +79,7 @@ class ApiController extends Controller
             // cari review berdasarkan nama produk || jenis produk
             ->orWhere(function ($query) use ($produks) {
                 $query->whereIn("produk_id", $produks->toArray());
-            })
+            })->with("komentar")
             ->get();
 
         $response = [
@@ -87,15 +90,31 @@ class ApiController extends Controller
         return response()->json($response);
     }
 
-    public function getDetailReview($id)
+    public function getDetailsReview($id)
     {
         $review = Review::with([
             "user" => function ($query) {
                 $query->select("id", "username", "gambar");
             }
-        ])->with("produk")->where("id", "=", $id)
+        ])->with([
+            "produk" => function ($query) {
+                $query->select("id", "nama_produk", "merk", "jenis", "gambar");
+            }
+        ])
+            ->with([
+                "komentar" => function ($query) {
+                    $query->with([
+                        "user" => function ($query) {
+                            $query->select("id", "username", "gambar");
+                        }
+                    ]);
+                }
+            ])->where("id", "=", $id)
             ->get();
-        $response = $review;
+
+        $response = [
+            "review" => $review
+        ];
         return response()->json($response);
     }
 }
