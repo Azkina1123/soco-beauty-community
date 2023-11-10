@@ -12,7 +12,7 @@
             <div class=" w-full p-3">
                 <hr class="border">
             </div>
-            <p class="font-bold text-2xl">HOME PAGE</p>
+            <p class="font-bold text-2xl">REVIEW PAGE</p>
 
             {{-- disini mau dibuat rencananya total akun, review, produk dll dehh --}}
 
