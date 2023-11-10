@@ -8,27 +8,20 @@
         <div class="w-[75%] py-2 ps-3 flex flex-col">
             @include('components.review-account')
 
-            <p class="mt-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati itaque alias praesentium
-                assumenda, iste
-                odit corrupti ipsum voluptatibus. Sed maiores odit quaerat aliquid id dolorum culpa eveniet in quidem,
-                reprehenderit dolor laboriosam quae excepturi facere porro, veritatis temporibus dolorem repudiandae atque
-                molestias obcaecati ad! Esse doloribus, modi nobis fugiat nihil, beatae quas accusantium veritatis
-                aspernatur reprehenderit pariatur mollitia, qui molestiae. Placeat sint eveniet aliquid hic dolores
-                excepturi, fugiat amet reiciendis deserunt dolorem reprehenderit cum officiis ex nemo corrupti accusantium
-                quaerat impedit voluptatem blanditiis. Tempore deleniti rerum aperiam maxime fuga beatae, sequi amet, odit
-                voluptate soluta nostrum sit id molestias vero!</p>
+            <p class="mt-3">{{ $review['isi'] }}</p>
 
             {{-- skincare yang direview --}}
             <a href="{{ route('user.skincares') }}"
-                class="border border-medium-forest-green grid grid-cols-4 h-[150px] rounded-md gap-5 mt-3">
+                class="border border-oasis bg-oasis bg-opacity-20 rounded-md mt-3 flex p-2 h-[120px] gap-3 overflow-hidden text-ellipsis whitespace-nowrap">
                 {{-- gambar skincare --}}
-                <div class="bg-light-slate-grey rounded-s-md">
+                <div class="bg-light-slate-grey rounded-s-md w-[100px] h-[100px] bg-cover bg-center"
+                    style="background-image: url('{{ asset('assets/skincares/' . $review['produk']['gambar']) }}')">
                 </div>
 
-                <div class="col-span-3 py-2">
-                    <h2 class="text-2xl">Nama Skincare</h2>
-                    <p>Merk skincare</p>
-                    <p class="text-light-slate-grey">Jenis skincare</p>
+                <div class="py-2">
+                    <h2 class="text-xl mb-1">{{ $review['produk']['nama_produk'] }}</h2>
+                    <p class="mb-1">{{ $review['produk']['merk'] }}</p>
+                    <p class="text-light-slate-grey">{{ $review['produk']['jenis'] }}</p>
                 </div>
 
             </a>

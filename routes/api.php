@@ -21,5 +21,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::controller(ApiController::class)->group(function () {
     Route::get('/user/home', 'getReview');
-    Route::get('/user/reviews/my-reviews', 'getMyReview');
+    Route::get('/user/reviews/{username}', 'getMyReview');
+    Route::get("/user/reviews", "getSearchReview");
+    Route::get("/user/reviews/details/{id}", "getDetailReview");
 });

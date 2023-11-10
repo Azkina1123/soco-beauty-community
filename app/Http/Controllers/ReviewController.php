@@ -19,14 +19,40 @@ class ReviewController extends Controller
             "reviews" => $data
         ]);
     }
-    public function myReviews()
+    public function myReviews($username)
     {
-        $endpoint = env("BASE_ENV") . "/api/user/reviews/my-reviews";
+        $endpoint = env("BASE_ENV") . "/api/user/reviews/{$username}";
         $data = Http::get($endpoint);
 
+        // return $data;
         return view('user/home', [
             "title" => "My Reviews",
             "reviews" => $data
+        ]);
+    }
+
+    public function searchReviews(Request $request)
+    {
+        $endpoint = env("BASE_ENV") . "/api/user/reviews?search=$request->search";
+        $data = Http::get($endpoint);
+
+        // return $data;
+        return view('user/home', [
+            "title" => "Search: $request->search",
+            "reviews" => $data,
+            "search" => $request->search
+        ]);
+    }
+
+    public function show($id)
+    {
+        $endpoint = env("BASE_ENV") . "/api/user/reviews/details/$id";
+        $data = Http::get($endpoint);
+
+        // return $data;
+        return view('user/detail-review', [
+            "title" => "Detail Review",
+            "review" => $data[0]
         ]);
     }
 }

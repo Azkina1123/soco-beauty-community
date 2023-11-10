@@ -1,11 +1,18 @@
         <div class="w-[25%] pe-2">
-            <form action="" class="px-2">
-                @include('components.input', [
-                    'type' => 'search',
-                    'name' => 'search',
-                    'placeholder' => 'Search',
-                    'required' => false,
-                ])
+            <form action="{{ route('user.reviews.search') }}" method="GET"
+                class="px-2 flex items-center justify-between">
+                <div class="me-2 w-full">
+
+                    @include('components.input', [
+                        'type' => 'search',
+                        'name' => 'search',
+                        'placeholder' => 'Search',
+                        'required' => false,
+                    ])
+                </div>
+                <button class="bg-danger flex justify-center items-center px-2">
+                    <img src="{{ asset('assets/images/search.svg') }}" alt="" class="w-8">
+                </button>
             </form>
 
             <div class="mt-5 flex flex-col items-start">
@@ -18,7 +25,7 @@
                     ])
 
                 </a>
-                <a href="{{ route('user.my-reviews') }}" class="sub-menu my-reviews">
+                <a href="{{ route('user.reviews.my', Auth::user()->username) }}" class="sub-menu my-reviews">
                     @include('components.text-btn', [
                         'label' => 'My Reviews',
                         'type' => 'button',

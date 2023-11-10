@@ -8,7 +8,8 @@
         style="background-image: url('{{ asset('assets/users/' . $gambarProfile) }}')"></div>
     <div class="flex flex-col">
         <p class="">{{ $review['user']['username'] }}</p>
-        <p class="text-light-slate-grey text-xs">Created at {{ $review['created_at'] }}</p>
+        <p class="text-light-slate-grey text-xs">Created at
+            {{ date('d M Y h.i', strtotime($review['created_at'])) }}</p>
     </div>
 
 </a>

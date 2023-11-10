@@ -41,8 +41,16 @@ Route::middleware("auth")->group(function () {
 
     // --- ReviewController -----------------------------------------------------------
     Route::controller(ReviewController::class)->group(function () {
-        Route::get("/user/home", "index")->name("user.home");
-        Route::get("/user/reviews/my-reviews", "myReviews")->name("user.my-reviews");
+        Route::get("/user/home/", "index")->name("user.home");
+        Route::get("/user/reviews/{username}", "myReviews")->name("user.reviews.my");
+        Route::get("/user/reviews", "searchReviews")->name("user.reviews.search");
+        Route::get("/user/reviews/details/{id}", "show")->name("user.reviews.details");
+        // Route::get('/user/reviews/{id}', function ($id) {
+        //     return view('user/detail-review', [
+        //         "title" => "Detail Review",
+        //         "id" => $id
+        //     ]);
+        // })->name("user.review");
     });
 
     // --- UserController -------------------------------------------------------------
@@ -74,12 +82,7 @@ Route::middleware("auth")->group(function () {
         ]);
     })->name("user.profile.edit");
 
-    Route::get('/user/reviews/{id}', function ($id) {
-        return view('user/detail-review', [
-            "title" => "Detail Review",
-            "id" => $id
-        ]);
-    })->name("user.review");
+
 
     // -=- ADMIN =========================================================================
     Route::get('/admin/home', function () {
