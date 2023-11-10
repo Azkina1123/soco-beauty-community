@@ -4,6 +4,7 @@ use App\Models\User;
 use App\Models\Produk;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\KomentarController;
+use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\UserController;
 use App\Models\Review;
@@ -48,44 +49,33 @@ Route::middleware("auth")->group(function () {
         Route::get("/user/reviews/{username}", "myReviews")->name("user.reviews.my");
         Route::get("/user/reviews", "searchReviews")->name("user.reviews.search");
         Route::get("/user/reviews/details/{id}", "show")->name("user.reviews.details");
+        Route::get("/user/reviews/add/{idProduk}/form", "add")->name("user.reviews.add");
+        Route::post("/user/reviews/add/{idProduk}/form/addAction", "store")->name("user.reviews.add.action");
+        Route::get("/user/reviews/details/delete/{id}/deleteAction", "delete")->name("user.reviews.delete.action");
     });
 
     // --- KomentarController ---------------------------------------------------------
     Route::controller(KomentarController::class)->group(function () {
-        Route::post("/user/reviews/details/{idReview}/comments/add", "store")->name("user.comments.addAction");
-        Route::get("/user/reviews/details/{idReview}/comments/delete/{idComment}", "delete")->name("user.comments.deleteAction");
+        Route::post("/user/reviews/details/{idReview}/comments/add", "store")->name("user.comments.add.action");
+        Route::get("/user/reviews/details/{idReview}/comments/delete/{id}/deleteAction", "delete")->name("user.comments.delete.action");
+    });
+
+    // --- ProdukController -----------------------------------------------------------
+    Route::controller(ProdukController::class)->group(function () {
+        Route::get("/user/reviews/add/select-skincare", "selectSkincare")->name("user.reviews.add.select-skincare");
     });
 
     // --- UserController -------------------------------------------------------------
     Route::controller(UserController::class)->group(function () {
         Route::get("/user/profile/{username}", "index")->name("user.profile");
+        Route::get("/user/profile/edit", "edit")->name("user.profile.edit");
     });
-
-
-    Route::get('/user/add-review/select-skincare', function () {
-        return view('user/select-skincare', [
-            "title" => "Select Skincare"
-        ]);
-    })->name("user.review.add.select-skincare");
 
     Route::get('/user/skincares', function () {
         return view('user/Skincares', [
             "title" => "Skincares"
         ]);
     })->name("user.skincares");
-
-    // Route::get('/user/profile', function () {
-    //     return view('user/profile', [
-    //         "title" => "Profile"
-    //     ]);
-    // })->name("user.profile");
-
-    Route::get('/user/profile/edit', function () {
-        return view('user/edit-profile', [
-            "title" => "Edit Profile"
-        ]);
-    })->name("user.profile.edit");
-
 
 
     // -=- ADMIN =========================================================================

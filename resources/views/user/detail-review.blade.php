@@ -11,20 +11,12 @@
             <p class="mt-3">{{ $review['isi'] }}</p>
 
             {{-- skincare yang direview --}}
-            <a href="{{ route('user.skincares') }}"
-                class="border border-oasis bg-oasis bg-opacity-20 rounded-md mt-3 flex p-2 h-[120px] gap-3 overflow-hidden text-ellipsis whitespace-nowrap">
-                {{-- gambar skincare --}}
-                <div class="bg-light-slate-grey rounded-s-md w-[100px] h-[100px] bg-cover bg-center"
-                    style="background-image: url('{{ asset('assets/skincares/' . $review['produk']['gambar']) }}')">
-                </div>
-
-                <div class="py-2">
-                    <h2 class="text-xl mb-1">{{ $review['produk']['nama_produk'] }}</h2>
-                    <p class="mb-1">{{ $review['produk']['merk'] }}</p>
-                    <p class="text-light-slate-grey">{{ $review['produk']['jenis'] }}</p>
-                </div>
-
-            </a>
+            @include('components.produk-banner', [
+                'nama_produk' => $review['produk']['nama_produk'],
+                'merk' => $review['produk']['merk'],
+                'jenis' => $review['produk']['jenis'],
+                'gambar' => $review['produk']['gambar'],
+            ])
 
             {{-- kolom komentar --}}
             <h2 class="py-5 mt-5"> Comments ({{ count($review['komentar']) }})</h2>
@@ -52,7 +44,7 @@
 
                 <div class="w-full">
                     <p class="text-sm text-light-slate-grey">{{ Auth::user()->username }}</p>
-                    <form action="{{ route('user.comments.addAction', $review['id']) }}" method="post"
+                    <form action="{{ route('user.comments.add.action', $review['id']) }}" method="post"
                         class="flex flex-col">
                         @csrf
                         @include('components.textarea', [
@@ -88,10 +80,10 @@
                         <p>{{ $komentar['isi'] }}</p>
                     </div>
 
-                    @if ($komentar['user_id'] == Auth::user()->id)
-                        <a href="{{ route('user.comments.deleteAction', [
+                    @if ($komentar['user_id'] == Auth::user()->id || Auth::user()->admin)
+                        <a href="{{ route('user.comments.delete.action', [
                             'idReview' => $review['id'],
-                            'idComment' => $komentar['id'],
+                            'id' => $komentar['id'],
                         ]) }}"
                             onclick="return confirm('Are you sure you want to delete your comment?')">
                             <button class="rounded-md bg-danger p-2 w-10 h-fit">

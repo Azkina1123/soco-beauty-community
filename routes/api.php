@@ -23,5 +23,7 @@ Route::controller(ApiController::class)->group(function () {
     Route::get('/user/home', 'getReviews');
     Route::get('/user/reviews/{username}', 'getMyReviews');
     Route::get("/user/reviews", "getSearchReviews");
-    Route::get("/user/reviews/details/{id}", "getDetailsReview");
+    Route::get("/user/reviews/details/{id}", "getReview");
+    Route::get("/user/reviews/add/select-skincare", "getProduks");
+    Route::get("/user/reviews/add/{idProduk}/form", "getProduk");
 });

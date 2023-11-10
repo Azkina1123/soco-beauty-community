@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Review;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
 
 class ReviewController extends Controller
@@ -54,5 +56,43 @@ class ReviewController extends Controller
             "title" => "Detail Review",
             "review" => $data["review"][0]
         ]);
+    }
+
+    public function add($idProduk)
+    {
+        $endpoint = env("BASE_ENV") . "/api/user/reviews/add/{$idProduk}/form";
+        $data = Http::get($endpoint);
+
+        return view("user.form-review", [
+            "title" => "Add Review",
+            "produk" => $data["produk"][0]
+        ]);
+    }
+
+    public function store(Request $request, $idProduk)
+    {
+        if (empty($request->isi)) {
+            return redirect()->route("user.home", [
+                "title" => "Home"
+            ])->with("failed", "Review failed to submit.");
+        }
+
+        Review::create([
+            "isi" => $request->isi,
+            "produk_id" => $idProduk,
+            "user_id" => Auth::user()->id
+        ]);
+
+        return redirect()->route("user.home", [
+            "title" => "Home"
+        ])->with("success", "Your review has been successfully submitted!");
+    }
+
+    public function delete($id)
+    {
+        $review = Review::findOrFail($id);
+        $review->delete();
+
+        return redirect()->route("user.home", ["title" => "Home"])->with("success", "Your review has been successfully deleted!");
     }
 }

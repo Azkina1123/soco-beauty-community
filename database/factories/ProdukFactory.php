@@ -63,8 +63,8 @@ class ProdukFactory extends Factory
             'skincare-1.jpeg',
             'skincare-2.jpeg',
             'skincare-3.jpeg',
-            'skincare-4.jpeg',
-            'skincare-5.jpeg'
+            'skincare-4.jpg',
+            'skincare-5.jpg'
         ];
         return [
             'nama_produk' => fake()->randomElement($namaProd),

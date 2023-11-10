@@ -10,7 +10,8 @@
         <div class="flex flex-col justify-center py-2 ps-3 w-full mb-10">
             <form action="" class="w-[50%] self-center">
                 <div class="flex flex-col items-center justify-center mb-4">
-                    <div class="rounded-full bg-cyan-blue bg-opacity-30 w-20 h-20 text-2xl flex justify-center items-center">
+                    <div class="rounded-full bg-cyan-blue bg-opacity-30 w-20 h-20 text-2xl flex justify-center items-center"
+                        style="background-image: url('{{ asset('assets/users/' . Auth::user()->gambar) }}')">
                         +
                     </div>
                     <input type="file" name="gambar" id="gambar" class="">
@@ -24,6 +25,7 @@
                         'placeholder' => 'Enter Username',
                         'type' => 'text',
                         'required' => true,
+                        'value' => Auth::user()->username,
                     ])
 
                 </div>
@@ -34,6 +36,7 @@
                         'placeholder' => 'Enter Full Name',
                         'type' => 'text',
                         'required' => true,
+                        'value' => Auth::user()->nama_lengkap,
                     ])
 
                 </div>
@@ -45,6 +48,7 @@
                         'placeholder' => 'Enter Password',
                         'type' => 'password',
                         'required' => true,
+                        // 'value' => Auth::user()->password,
                     ])
                 </div>
 

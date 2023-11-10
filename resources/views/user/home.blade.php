@@ -10,18 +10,33 @@
 
         <div class="w-[75%] py-2 ps-3 flex flex-col">
 
-            <a href="{{ route('user.review.add.select-skincare') }}" class="mb-5">
+            <a href="{{ route('user.reviews.add.select-skincare') }}" class="mb-5">
                 @include('components.outlined-btn', [
                     'label' => 'Add New Review +',
                     'type' => 'button',
                 ])
             </a>
+
+            @if (session('success'))
+                @include('components.alert', [
+                    'title' => 'SUCCESS',
+                    'content' => session('success'),
+                    'type' => 'success',
+                ])
+            @elseif(session('failed'))
+                @include('components.alert', [
+                    'title' => 'Failed',
+                    'content' => session('failed'),
+                    'type' => 'error',
+                ])
+            @endif
+
             @if (isset($search))
                 <p class="mb-3">Search results: {{ $search }}</p>
             @endif
 
             @if (empty($reviews['data']))
-                <p class="text-center mt-16">No data has been added yet.</p>
+                <p class="text-center mt-16">No review has been added yet.</p>
             @endif
 
 

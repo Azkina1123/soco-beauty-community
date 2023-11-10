@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
-use App\Models\Komentar;
+
 use App\Models\Produk;
 use App\Models\Review;
 use App\Models\User;
@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Auth;
 
 class ApiController extends Controller
 {
+    // dapatkan data semua review
     public function getReviews()
     {
         $reviews = Review::orderBy("created_at", "desc")->with([
@@ -20,7 +21,7 @@ class ApiController extends Controller
             }
         ])->with([
             "produk" => function ($query) {
-                $query->select("id", "nama_produk", "jenis", "gambar");
+                $query->select("id", "nama_produk", "merk", "jenis", "gambar");
             }
         ])->with("komentar")
             ->get();
@@ -33,6 +34,7 @@ class ApiController extends Controller
         return response()->json($response);
     }
 
+    // dapatkan data hanya review akun yg sedang login
     public function getMyReviews($username)
     {
         $id = User::where("username", $username)->first()->id;
@@ -43,7 +45,7 @@ class ApiController extends Controller
                 }
             ])->with([
                 "produk" => function ($query) {
-                    $query->select("id", "nama_produk", "jenis", "gambar");
+                    $query->select("id", "nama_produk", "merk", "jenis", "gambar");
                 }
             ])->with("komentar")
             ->get();
@@ -56,6 +58,7 @@ class ApiController extends Controller
         return response()->json($response);
     }
 
+    // dapatkan data hanya review yang dicari
     public function getSearchReviews(Request $request)
     {
         // cari produk berdasarkan nama produk || jenis produk
@@ -71,7 +74,7 @@ class ApiController extends Controller
             }
         ])->with([
             "produk" => function ($query) {
-                $query->select("id", "nama_produk", "jenis", "gambar");
+                $query->select("id", "nama_produk", "merk", "jenis", "gambar");
             }
         ])
             // cari review berdasarkan isi review
@@ -90,7 +93,8 @@ class ApiController extends Controller
         return response()->json($response);
     }
 
-    public function getDetailsReview($idReview)
+    // dapatkan data review tertentu
+    public function getReview($idReview)
     {
         $review = Review::with([
             "user" => function ($query) {
@@ -114,6 +118,30 @@ class ApiController extends Controller
 
         $response = [
             "review" => $review
+        ];
+        return response()->json($response);
+    }
+
+    // dapatkan data semua produk
+    public function getProduks(Request $request)
+    {
+        // cari produk berdasarkan nama produk || jenis produk
+        $produks = Produk::orderBy("created_at", "desc")
+            ->where("nama_produk", "LIKE", "%$request->search%")
+            ->orWhere("jenis", "=", "$request->search")
+            ->get();
+
+        $response = [
+            "produks" => $produks
+        ];
+        return response()->json($response);
+    }
+
+    public function getProduk($idProduk)
+    {
+        $produk = Produk::where("id", "=", $idProduk)->get();
+        $response = [
+            "produk" => $produk
         ];
         return response()->json($response);
     }

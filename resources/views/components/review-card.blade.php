@@ -5,21 +5,12 @@
 
                         <div class="mt-3 flex flex-col">
 
-                            <a href="{{ route('user.skincares') }}"
-                                class="border border-oasis bg-oasis bg-opacity-20 rounded-md mt-3 flex p-2 h-[120px]">
-                                {{-- gambar skincare --}}
-                                <div class="bg-light-slate-grey rounded-md w-[30%] h-[100px] me-2 bg-cover"
-                                    style="background-image: url('{{ asset('assets/skincares/' . $review['produk']['gambar']) }}')">
-                                </div>
-
-                                <div class="py-2 w-[70%]">
-                                    <h2 class="text-lg overflow-hidden text-ellipsis whitespace-nowrap">
-                                        {{ $review['produk']['nama_produk'] }}
-                                    </h2>
-                                    <p class="text-light-slate-grey text-md">Jenis skincare</p>
-                                </div>
-
-                            </a>
+                            @include('components.produk-banner', [
+                                'nama_produk' => $review['produk']['nama_produk'],
+                                'merk' => $review['produk']['merk'],
+                                'jenis' => $review['produk']['jenis'],
+                                'gambar' => $review['produk']['gambar'],
+                            ])
 
                             {{-- penjelasan skincare --}}
                             <div class="flex flex-col h-full justify-between">

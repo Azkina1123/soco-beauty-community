@@ -24,10 +24,10 @@ class KomentarController extends Controller
         return redirect()->route("user.reviews.details", $idReview)->with("success", "Your comment has been successfully submitted!");
     }
 
-    public function delete($idReview, $idComment)
+    public function delete($idReview, $id)
     {
-        $movie = Komentar::findOrFail($idComment);
-        $movie->delete();
+        $komentar = Komentar::findOrFail($id);
+        $komentar->delete();
 
         return redirect()->route("user.reviews.details", $idReview)->with("success", "Your comment has been successfully deleted!");
     }
