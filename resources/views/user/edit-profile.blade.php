@@ -8,11 +8,31 @@
         @include('components.sidebar-profile')
 
         <div class="flex flex-col justify-center py-2 ps-3 w-full mb-10">
-            <form action="" class="w-[50%] self-center">
+
+
+
+            <form action="{{ route('user.profile.edit.action') }}" method="POST" enctype="multipart/form-data"
+                class="w-[50%] self-center">
+                @csrf
+
+                @if (session('success'))
+                    @include('components.alert', [
+                        'title' => 'SUCCESS',
+                        'content' => session('success'),
+                        'type' => 'success',
+                    ])
+                @elseif(session('error'))
+                    @include('components.alert', [
+                        'title' => 'Failed',
+                        'content' => session('error'),
+                        'type' => 'error',
+                    ])
+                @endif
+
                 <div class="flex flex-col items-center justify-center mb-4">
-                    <div class="rounded-full bg-cyan-blue bg-opacity-30 w-20 h-20 text-2xl flex justify-center items-center"
+                    <div class="rounded-full bg-cyan-blue bg-opacity-30 w-20 h-20 text-2xl flex justify-center items-center bg-cover bg-center"
                         style="background-image: url('{{ asset('assets/users/' . Auth::user()->gambar) }}')">
-                        +
+
                     </div>
                     <input type="file" name="gambar" id="gambar" class="">
 
@@ -30,9 +50,9 @@
 
                 </div>
                 <div class="mb-4">
-                    <label for="fullname" class="font-bold"> Full Name </label>
+                    <label for="nama_lengkap" class="font-bold"> Full Name </label>
                     @include('components.input', [
-                        'name' => 'fullname',
+                        'name' => 'nama_lengkap',
                         'placeholder' => 'Enter Full Name',
                         'type' => 'text',
                         'required' => true,
@@ -53,6 +73,24 @@
                 </div>
 
                 <div class="mb-4">
+                    <div class="flex items-baseline">
+                        <label for="newPassword" class="font-bold me-2">
+                            New Password (Optional)
+                        </label>
+                        <p class="text-light-slate-grey font-normal text-sm"> Fill in if you want to change your password.
+                        </p>
+
+                    </div>
+                    @include('components.input', [
+                        'name' => 'newPassword',
+                        'placeholder' => 'Enter New Password',
+                        'type' => 'password',
+                        'required' => false,
+                        // 'value' => Auth::user()->password,
+                    ])
+                </div>
+
+                <div class="mb-4">
                     <label for="confirm" class="font-bold"> Confirm Password </label>
                     @include('components.input', [
                         'name' => 'confirm',
@@ -65,7 +103,9 @@
 
                 <div class="grid grid-cols-2 gap-3 mt-8">
 
-                    @include('components.elevated-btn', ['label' => 'Cancel', 'type' => 'button'])
+                    <a href="{{ route('user.profile', Auth::user()->username) }}">
+                        @include('components.elevated-btn', ['label' => 'Cancel', 'type' => 'button'])
+                    </a>
                     @include('components.outlined-btn', [
                         'label' => 'Edit',
                         'type' => 'submit',

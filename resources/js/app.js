@@ -1,22 +1,23 @@
 import './bootstrap';
 
-function disabledBtn(btn) {
-    btn.classList.replace("bg-cool-blue", "bg-light-slate-grey")
-    btn.classList.replace("hover:bg-cool-blue-hover", "hover:bg-light-slate-grey")
 
-    btn.disbaled = true;
-}
-function enabledBtn(btn) {
-    btn.classList.replace("bg-light-slate-grey", "bg-cool-blue")
-    btn.classList.replace("hover:bg-light-slate-grey", "hover:bg-cool-blue-hover")
-    btn.disbaled = false;
-}
 
 var routePath = window.location.pathname;
 var routeUrl = window.location.href;
 
+if (routePath.includes("/sign-up") || routePath.includes("/profile/my/edit")) {
+    var userInput = document.querySelector("input[name=username]");
+
+    userInput.onkeypress = function (e) {
+        if (e.which === 32) {
+            return false
+        }
+    }
+
+}
+
 // ketika di halaman home
-if ((routePath.includes("/home") || routePath.includes("/reviews")) && !routePath.includes("/add")) {
+if ((routePath.includes("/home") || routePath.includes("/reviews")) && !routePath.includes("/add") && !routePath.includes("/produk")) {
 
     var menuHome = document.querySelector(".menu-home .text-btn");
     var subMenuMyReviews = document.querySelector(".sub-menu.my-reviews .text-btn");
@@ -59,7 +60,7 @@ if ((routePath.includes("/home") || routePath.includes("/reviews")) && !routePat
 }
 
 // ketika di halaman detail-reviews
-if (routePath.includes("/details/")) {
+if (routePath.includes("reviews/details/")) {
     var commentTextarea = document.getElementsByClassName("textarea")[0];
     var commentBtn = document.getElementsByClassName("elevated-btn")[0];
     // var link = document.getElementsByClassName("elevated-btn")[0].getAttribute("href");
@@ -105,20 +106,105 @@ if (routePath.includes("/select-skincare")) {
 }
 
 // ketika di halaman skincares
-if (routePath.includes("/skincares")) {
+if (routeUrl.includes("skincares")) {
     var menuHome = document.querySelector(".menu-skincares .text-btn");
     menuHome.classList.add("font-bold");
-    menuHome.classList.replace("text-light-slate-grey", "text-cool-blue")
+    menuHome.classList.replace("text-light-slate-grey", "text-cool-blue");
+
+    var subMenuMyReviews = document.querySelector(".sub-menu.my-reviews .text-btn");
+    var subMenuAll = document.querySelector(".sub-menu.all .text-btn");
+    var subMenuFw = document.querySelector(".sub-menu.fw .text-btn");
+    var subMenuToner = document.querySelector(".sub-menu.toner .text-btn");
+    var subMenuSerum = document.querySelector(".sub-menu.serum .text-btn");
+    var subMenuMoist = document.querySelector(".sub-menu.moist .text-btn");
+    var subMenuSs = document.querySelector(".sub-menu.ss .text-btn");
+
+    subMenuAll.classList.add("font-bold");
+    subMenuAll.classList.replace("text-light-slate-grey", "text-medium-forest-green");
+
+    // jika dalam mode pencarian
+    if (routeUrl.includes("search") || routeUrl.includes("details")) {
+        // kembalikan tampilan sub menu all dan my reviews ke keadaan awal
+        subMenuAll.classList.remove("font-bold");
+        subMenuAll.classList.replace("text-medium-forest-green", "text-light-slate-grey");
+        subMenuMyReviews.classList.remove("font-bold");
+        subMenuMyReviews.classList.replace("text-medium-forest-green", "text-light-slate-grey");
+
+    } else if (routeUrl.includes("category")) {
+        // jika tidak dalam mode pencarian
+
+        // kembalikan tampilan sub menu my reviews ke keadaan awal
+        document.querySelectorAll(".sidebar .text-btn").forEach(subMenu => {
+            subMenu.classList.remove("font-bold");
+            subMenu.classList.replace("text-medium-forest-green", "text-light-slate-grey");
+        });
+
+        if (routeUrl.includes("facial-wash")) {
+            subMenuFw.classList.add("font-bold");
+            subMenuFw.classList.replace("text-light-slate-grey", "text-medium-forest-green");
+        } else if (routeUrl.includes("toner")) {
+            subMenuToner.classList.add("font-bold");
+            subMenuToner.classList.replace("text-light-slate-grey", "text-medium-forest-green");
+        } else if (routeUrl.includes("serum")) {
+            subMenuSerum.classList.add("font-bold");
+            subMenuSerum.classList.replace("text-light-slate-grey", "text-medium-forest-green");
+        } else if (routeUrl.includes("moist")) {
+            subMenuMoist.classList.add("font-bold");
+            subMenuMoist.classList.replace("text-light-slate-grey", "text-medium-forest-green");
+        } else if (routeUrl.includes("sunscreen")) {
+            subMenuSs.classList.add("font-bold");
+            subMenuSs.classList.replace("text-light-slate-grey", "text-medium-forest-green");
+        }
+
+    }
 }
 
 // ketika di halaman profile
 if (routePath.includes("/profile")) {
     var menuHome = document.querySelector(".menu-profile");
+    var subMenuProfile = document.querySelector(".sub-menu.profile .text-btn");
+    var subMenuEdit = document.querySelector(".sub-menu.edit .text-btn");
     menuHome.classList.add("font-bold");
     menuHome.classList.replace("text-light-slate-grey", "text-cool-blue")
+
+    // di sub menu edit profile
+    if (routePath.includes("edit")) {
+        subMenuEdit.classList.add("font-bold");
+        subMenuEdit.classList.replace("text-light-slate-grey", "text-medium-forest-green");
+        subMenuProfile.classList.remove("font-bold");
+        subMenuProfile.classList.replace("text-medium-forest-green", "text-light-slate-grey");
+        // di sub menu profile
+    } else {
+        var username = document.querySelector("header .username").innerHTML;
+        if (routePath == "/user/profile/" + username) {
+            subMenuProfile.classList.add("font-bold");
+            subMenuProfile.classList.replace("text-light-slate-grey", "text-medium-forest-green");
+            subMenuEdit.classList.remove("font-bold");
+            subMenuEdit.classList.replace("text-medium-forest-green", "text-light-slate-grey");
+
+        }
+    }
 }
 
+function disabledBtn(btn) {
+    btn.classList.replace("bg-cool-blue", "bg-light-slate-grey")
+    btn.classList.replace("hover:bg-cool-blue-hover", "hover:bg-light-slate-grey")
 
+    btn.disbaled = true;
+}
+function enabledBtn(btn) {
+    btn.classList.replace("bg-light-slate-grey", "bg-cool-blue")
+    btn.classList.replace("hover:bg-light-slate-grey", "hover:bg-cool-blue-hover")
+    btn.disbaled = false;
+}
+
+function numOnly(event) {
+    var ascii = (event.which) ? event.which : event.keyCode
+    if (ascii >= 48 && ascii <= 57) {
+        return true;
+    }
+    return false;
+}
 
 
 

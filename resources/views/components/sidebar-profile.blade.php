@@ -2,16 +2,15 @@
 
     <div class="mt-5 flex flex-col items-start">
 
-        <a href="{{ route('user.profile', Auth::user()->username) }}">
+        <a href="{{ route('user.profile', Auth::user()->username) }}" class="sub-menu profile">
             @include('components.text-btn', [
                 'label' => 'My Profile',
                 'type' => 'button',
                 'color' => 'green',
             ])
-
         </a>
 
-        <a href="{{ route('user.profile.edit') }}">
+        <a href="{{ route('user.profile.edit') }}" class="sub-menu edit">
             @include('components.text-btn', [
                 'label' => 'Edit Profile',
                 'type' => 'button',

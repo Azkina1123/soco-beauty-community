@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Produk;
 use App\Models\Review;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -43,6 +44,20 @@ class ReviewController extends Controller
             "title" => "Search: $request->search",
             "reviews" => $data,
             "search" => $request->search
+        ]);
+    }
+
+    public function produkReviews($id)
+    {
+        $endpoint = env("BASE_ENV") . "/api/user/reviews/produk/{$id}";
+        $data = Http::get($endpoint);
+
+        $nama_produk = Produk::where("id", $id)->first()->nama_produk;
+        // return $data;
+        return view('user/home', [
+            "title" => "Search: " . $nama_produk,
+            "reviews" => $data,
+            "search" => $nama_produk
         ]);
     }
 

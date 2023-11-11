@@ -55,9 +55,12 @@ class AuthController extends Controller
     // tambahkan akun
     public function signUpAction(Request $request)
     {
+        if (strpos($request->username, " ")) {
+            return redirect(route("sign-up"))->with("error", "Invalid entry.\nThe username you entered is not valid. ");
+        }
         // jika password salah
         if ($request->password != $request->confirm) {
-            return redirect(route("sign-up"))->with("error", "Wrong conirmation password!");
+            return redirect(route("sign-up"))->with("error", "Wrong confirmation password!");
         }
 
         $usernameExist = User::where("username", $request->username)->first();
@@ -91,6 +94,14 @@ class AuthController extends Controller
         //     "nama_lengkap" => "required|string|max:100",
         //     "password" => "required|string",
         // ]);
+
+        // // check jika user ada memasukkan spasi
+        // $usernameArr = explode(" ", $request->username);
+        // $username = "";
+
+        // foreach ($usernameArr as $key) {
+        //     $username .= $key;
+        // }
 
         User::create([
             "username" => $request->username,

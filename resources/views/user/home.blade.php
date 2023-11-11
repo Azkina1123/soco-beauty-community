@@ -31,7 +31,7 @@
                 ])
             @endif
 
-            @if (isset($search))
+            @if (!empty($search))
                 <p class="mb-3">Search results: {{ $search }}</p>
             @endif
 

@@ -12,6 +12,7 @@
 
             {{-- skincare yang direview --}}
             @include('components.produk-banner', [
+                'id' => $review['produk']['id'],
                 'nama_produk' => $review['produk']['nama_produk'],
                 'merk' => $review['produk']['merk'],
                 'jenis' => $review['produk']['jenis'],

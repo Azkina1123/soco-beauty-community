@@ -14,7 +14,21 @@
                 <h1 class="text-3xl mb-1">Welcome Back!</h1>
                 <p class="">Access your latest skincare information.</p>
 
-                <div class="mb-4 mt-12">
+                <div class="mb-4 mt-10">
+                    @if (session('success'))
+                        @include('components.alert', [
+                            'title' => 'SUCCESS',
+                            'content' => session('success'),
+                            'type' => 'success',
+                        ])
+                    @elseif (session('error'))
+                        @include('components.alert', [
+                            'title' => 'FAILED',
+                            'content' => session('error'),
+                            'type' => 'error',
+                        ])
+                    @endif
+
                     <label for="username" class="font-bold"> Username </label>
                     @include('components.input', [
                         'name' => 'username',

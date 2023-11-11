@@ -1,4 +1,5 @@
-<a href="{{ route('user.skincares') }}" class="border border-oasis bg-oasis bg-opacity-20 rounded-md mt-3 flex p-2 gap-3">
+<a href="{{ route('user.skincares.details', $id) }}"
+    class="border border-oasis bg-oasis bg-opacity-20 rounded-md mt-3 flex p-2 gap-3">
     {{-- gambar skincare --}}
     <div class="bg-light-slate-grey rounded-s-md w-[100px] h-[100px] bg-cover bg-center"
         style="background-image: url('{{ asset('assets/skincares/' . $gambar) }}')">

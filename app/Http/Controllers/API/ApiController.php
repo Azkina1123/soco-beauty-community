@@ -67,7 +67,6 @@ class ApiController extends Controller
             ->orWhere("jenis", "=", "$request->search")
             ->get();
 
-
         $reviews = Review::with([
             "user" => function ($query) {
                 $query->select("id", "username", "gambar");
@@ -76,15 +75,35 @@ class ApiController extends Controller
             "produk" => function ($query) {
                 $query->select("id", "nama_produk", "merk", "jenis", "gambar");
             }
-        ])
+        ])->with("komentar")
             // cari review berdasarkan isi review
             ->where("isi", "LIKE", "%$request->search%")
-            // cari review berdasarkan nama produk || jenis produk
+            // cari review berdasarkan nama produk || jenis produk || produk_id
             ->orWhere(function ($query) use ($produks) {
                 $query->whereIn("produk_id", $produks->toArray());
-            })->with("komentar")
+            })
             ->get();
 
+        $response = [
+            "status" => "success",
+            "data" => $reviews
+        ];
+
+        return response()->json($response);
+    }
+
+    public function getProdukReviews($id)
+    {
+        $reviews = Review::with([
+            "user" => function ($query) {
+                $query->select("id", "username", "gambar");
+            }
+        ])->with([
+            "produk" => function ($query) {
+                $query->select("id", "nama_produk", "merk", "jenis", "gambar");
+            }
+        ])->with("komentar")
+            ->where("produk_id", "=", $id)->get();
         $response = [
             "status" => "success",
             "data" => $reviews
@@ -131,8 +150,15 @@ class ApiController extends Controller
             ->orWhere("jenis", "=", "$request->search")
             ->get();
 
+        if (!empty($request->category)) {
+            $produks = Produk::orderBy("created_at", "desc")
+                ->orWhere("jenis", "=", $request->category == "facial-wash" ? "facial wash" : $request->category)
+                ->get();
+        }
+
         $response = [
-            "produks" => $produks
+            "success" => "success",
+            "data" => $produks
         ];
         return response()->json($response);
     }
@@ -143,6 +169,49 @@ class ApiController extends Controller
         $response = [
             "produk" => $produk
         ];
+        return response()->json($response);
+    }
+
+    public function getUser($username)
+    {
+        $user = User::with([
+            "review" => function ($query) {
+                $query->orderBy("created_at", "desc")->with("user")->with("produk")->with("komentar");
+            }
+        ])
+            ->where("username", "=", $username)->get();
+        $response = [
+            "user" => $user
+        ];
+        return response()->json($response);
+    }
+
+    public function getLandingData()
+    {
+        $produks = Produk::withCount("review")->orderBy("review_count", "desc")->take(4)->get();
+        $reviews =
+            Review::orderBy("created_at", "desc")->with([
+                "user" => function ($query) {
+                    $query->select("id", "username", "gambar");
+                }
+            ])->with([
+                "produk" => function ($query) {
+                    $query->select("id", "nama_produk", "merk", "jenis", "gambar");
+                }
+            ])->with([
+                "komentar" => function ($query) {
+                    $query->select("id");
+                }
+            ])
+            ->take(3)
+            ->get();
+
+        $response = [
+            "status" => "success",
+            "produks" => $produks,
+            "reviews" => $reviews
+        ];
+
         return response()->json($response);
     }
 }

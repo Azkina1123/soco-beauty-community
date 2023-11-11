@@ -11,6 +11,7 @@
             <h1 class="text-2xl font-bold text-medium-forest-green mb-2">Write your Review</h1>
 
             @include('components.produk-banner', [
+                'id' => $produk['id'],
                 'nama_produk' => $produk['nama_produk'],
                 'merk' => $produk['merk'],
                 'jenis' => $produk['jenis'],

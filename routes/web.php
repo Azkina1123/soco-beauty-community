@@ -8,6 +8,7 @@ use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\UserController;
 use App\Models\Review;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,8 +23,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+
+    $endpoint = env("BASE_ENV") . "/api";
+    $data = Http::get($endpoint);
+
     return view('landing', [
-        "title" => "Soco - Beauty Community"
+        "title" => "Soco - Beauty Community",
+        "produks" => $data["produks"],
+        "reviews" => $data["reviews"]
     ]);
 })->name("landing");
 
@@ -52,6 +59,7 @@ Route::middleware("auth")->group(function () {
         Route::get("/user/reviews/add/{idProduk}/form", "add")->name("user.reviews.add");
         Route::post("/user/reviews/add/{idProduk}/form/addAction", "store")->name("user.reviews.add.action");
         Route::get("/user/reviews/details/delete/{id}/deleteAction", "delete")->name("user.reviews.delete.action");
+        Route::get("/user/reviews/produk/{id}", "produkReviews")->name("user.reviews.produk");
     });
 
     // --- KomentarController ---------------------------------------------------------
@@ -62,20 +70,19 @@ Route::middleware("auth")->group(function () {
 
     // --- ProdukController -----------------------------------------------------------
     Route::controller(ProdukController::class)->group(function () {
-        Route::get("/user/reviews/add/select-skincare", "selectSkincare")->name("user.reviews.add.select-skincare");
+        Route::get("/user/reviews/add/select-skincare", "selectProduk")->name("user.reviews.add.select-skincare");
+        Route::get("/user/skincares", "index")->name("user.skincares");
+        Route::get("/user/skincares/{jenis}", "categoryProduks")->name("user.skincares.category");
+        Route::get("/user/skincares/search", "searchProduks")->name("user.skincares.search");
+        Route::get("/user/skincares/details/{id}", "show")->name("user.skincares.details");
     });
 
     // --- UserController -------------------------------------------------------------
     Route::controller(UserController::class)->group(function () {
         Route::get("/user/profile/{username}", "index")->name("user.profile");
-        Route::get("/user/profile/edit", "edit")->name("user.profile.edit");
+        Route::get("/user/profile/my/edit", "edit")->name("user.profile.edit");
+        Route::post("/user/profile/my/edit/action", "update")->name("user.profile.edit.action");
     });
-
-    Route::get('/user/skincares', function () {
-        return view('user/Skincares', [
-            "title" => "Skincares"
-        ]);
-    })->name("user.skincares");
 
 
     // -=- ADMIN =========================================================================

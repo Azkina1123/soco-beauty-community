@@ -14,12 +14,16 @@
         </div>
 
     </a>
-    @if ($review['user_id'] == Auth::user()->id || Auth::user()->admin)
-        <a href="{{ route('user.reviews.delete.action', $review['id']) }}"
-            onclick="return confirm('Are you sure you want to delete your review?')">
-            <button class="rounded-md bg-danger p-2 w-10 h-fit">
-                <img src="{{ asset('assets/images/delete.svg') }}" alt="" class="">
-            </button>
-        </a>
+    @if (Auth::user() !== null)
+
+        @if ($review['user_id'] == Auth::user()->id || Auth::user()->admin)
+            <a href="{{ route('user.reviews.delete.action', $review['id']) }}"
+                onclick="return confirm('Are you sure you want to delete your review?')">
+                <button class="rounded-md bg-danger p-2 w-10 h-fit">
+                    <img src="{{ asset('assets/images/delete.svg') }}" alt="" class="">
+                </button>
+            </a>
+        @endif
     @endif
+
 </div>

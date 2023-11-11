@@ -6,6 +6,7 @@
                         <div class="mt-3 flex flex-col">
 
                             @include('components.produk-banner', [
+                                'id' => $review['produk']['id'],
                                 'nama_produk' => $review['produk']['nama_produk'],
                                 'merk' => $review['produk']['merk'],
                                 'jenis' => $review['produk']['jenis'],

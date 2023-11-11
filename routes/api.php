@@ -26,4 +26,13 @@ Route::controller(ApiController::class)->group(function () {
     Route::get("/user/reviews/details/{id}", "getReview");
     Route::get("/user/reviews/add/select-skincare", "getProduks");
     Route::get("/user/reviews/add/{idProduk}/form", "getProduk");
+    Route::get("/user/reviews/produk/{id}", "getProdukReviews");
+
+    Route::get("/user/skincares", "getProduks");
+    Route::get("/user/skincares/all", "getProduks");
+    Route::get("/user/skincares/details/{id}", "getProduk");
+
+    Route::get("/user/profile/{username}", "getUser");
+
+    Route::get("/", "getLandingData");
 });

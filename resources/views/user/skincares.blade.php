@@ -8,16 +8,35 @@
         {{-- sidebar --}}
         @include('components.sidebar-skincare')
 
-        <div class="w-[75%] h-fit py-2 ps-3 grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-5">
-            <div class="bg-slate-400 h-[250px] rounded-md"></div>
-            <div class="bg-slate-400 h-[250px] rounded-md"></div>
-            <div class="bg-slate-400 h-[250px] rounded-md"></div>
-            <div class="bg-slate-400 h-[250px] rounded-md"></div>
-            <div class="bg-slate-400 h-[250px] rounded-md"></div>
-            <div class="bg-slate-400 h-[250px] rounded-md"></div>
-            <div class="bg-slate-400 h-[250px] rounded-md"></div>
+        <div class="w-[75%] h-fit py-2 ps-3 ">
+            @if (!empty($search))
+                <p class="mb-3">Search results: {{ $search }}</p>
+            @endif
 
-            {{-- skincares --}}
+            @if (empty($produks['data']))
+                <p class="text-center mt-16">No skincare has been added yet.</p>
+            @endif
+
+            <div class="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-5">
+                @foreach ($produks['data'] as $produk)
+                    <a href="{{ route('user.skincares.details', $produk['id']) }}"
+                        class="h-[300px] border border-light-slate-grey border-opacity-50 rounded-md hover:shadow-md shadow-light-slate-grey flex flex-col items-center">
+
+                        <div class="w-[50%] h-[70%] p-2">
+                            <div class="bg-center bg-cover h-full"
+                                style="background-image: url('{{ asset('assets/skincares/' . $produk['gambar']) }}')">
+
+                            </div>
+                        </div>
+
+                        <div
+                            class="bg-cyan-blue w-full h-[30%] bg-cover bg-center bg-opacity-20 flex flex-col justify-center items-center p-3">
+                            <p class="text-center">{{ $produk['nama_produk'] }}</p>
+                            <p class="text-center text-light-slate-grey">{{ $produk['jenis'] }}</p>
+                        </div>
+                    </a>
+                @endforeach
+            </div>
 
         </div>
     </div>
