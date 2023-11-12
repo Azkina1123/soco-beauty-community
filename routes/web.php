@@ -114,23 +114,13 @@ Route::middleware("auth")->group(function () {
         ]);
     })->name("admin.review");
 
-    Route::get('/admin/account', function () {
-        return view('admin/account', [
-            "account" => User::all(),
-            "title" => "Account"
-        ]);
-    })->name("admin.account");
 
-    Route::get('/admin/product', function () {
-        return view('admin/product', [
-            "product" => Produk::all(),
-            "title" => "Product"
-        ]);
-    })->name("admin.product");
 
-    Route::get('/admin/review', function () {
-        return view('admin/review', [
-            "title" => "Review"
-        ]);
-    })->name("admin.review");
+
+});
+
+Route::controller(ProdukController::class)->group(function(){
+    Route::get('/admin/account/create', 'create')->name('admin.crud.add');
+    Route::post('/admin/account/create/action', 'store')->name('admin.store');
+
 });

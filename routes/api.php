@@ -35,4 +35,9 @@ Route::controller(ApiController::class)->group(function () {
     Route::get("/user/profile/{username}", "getUser");
 
     Route::get("/", "getLandingData");
+
+    Route::get("/admin/account", "getAllUser");
+
+
 });
+

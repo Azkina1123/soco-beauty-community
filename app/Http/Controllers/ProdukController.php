@@ -65,4 +65,21 @@ class ProdukController extends Controller
             "search" => $request->search
         ]);
     }
+
+    public function create(){
+        return view('admin.crud.add', ["title" => "Add Products"]);
+    }
+
+    public function store(Request $request){
+        $validateData = $request->validate([
+            'nama_produk' => 'required|string',
+            'jenis' => 'required|string',
+            'deskripsi' => 'required|string',
+            'merk' => 'required|string',
+            'gambar' => 'required|string',
+        ]);
+        Produk::create($validateData);
+        return redirect()->route('admin.product')->with('success', 'data produk berhasil ditambahkan');
+
+    }
 }

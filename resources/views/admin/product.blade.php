@@ -15,8 +15,16 @@
         <div class="w-[75%] py-2 ps-3 flex flex-col">
             <div class=" w-full p-3">
                 <hr class="border">
+
+            </div class="flex justify-between items-center">
+                <p class="font-bold text-2xl">PRODUCT PAGE</p>
+                <a href="{{ route('admin.crud.add') }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4">
+                    <i class="fas fa-plus"></i> Create
+                </a>
+            <div>
+
             </div>
-            <p class="font-bold text-2xl">PRODUCT PAGE</p>
+
 
             <div class=" w-full p-3"></div>
 
@@ -34,11 +42,11 @@
 
                 <h1 class="text-lg font-bold"> {{ $pro->nama_produk }}</h1>
 
-                <div class="mt-3 flex flex-col">
+                <div class="mt-3 flex flex-col items-center">
 
                     {{-- gambar product --}}
-                    <div class="bg-light-slate-grey rounded-md h-[200px]">
-                        <img src="{{ asset('public/assets/skincares/' . $pro->gambar) }}" alt="Product Image">
+                    <div class="bg-light-slate-grey rounded-md h-[200px] ">
+                        <img src="{{ asset('assets/skincares/'.$pro->gambar) }}" alt="Product Image" class="w-full h-full object-cover>
                     </div>
 
                     <div class=" w-full p-2"></div>

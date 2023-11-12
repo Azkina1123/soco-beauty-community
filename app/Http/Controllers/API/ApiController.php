@@ -214,4 +214,14 @@ class ApiController extends Controller
 
         return response()->json($response);
     }
+
+    public function getAllUser(){
+        $response = [
+            'status' => 'success',
+            'message' => 'Data Berhasil Diambil',
+            'data' => $username
+            ];
+            return response()->json($response);
+
+    }
 }
