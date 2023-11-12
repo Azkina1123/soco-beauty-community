@@ -71,14 +71,35 @@ class ProdukController extends Controller
     }
 
     public function store(Request $request){
-        $validateData = $request->validate([
-            'nama_produk' => 'required|string',
-            'jenis' => 'required|string',
-            'deskripsi' => 'required|string',
-            'merk' => 'required|string',
-            'gambar' => 'required|string',
+        // $validateData = $request->validate([
+        //     'nama_produk' => 'required|string',
+        //     'jenis' => 'required|string',
+        //     'deskripsi' => 'required|string',
+        //     'merk' => 'required|string',
+        //     'gambar' => 'required|image|mimes:jpeg,png,jpg,gif',
+        // ]);
+
+        $namaGambar = "";
+
+        if ($request->hasFile("gambar")) {
+            $filename = $request->gambar->getClientOriginalName();
+
+            $filenameArr = explode(".", $filename);
+
+            $ekstensi = strtolower(end($filenameArr));
+
+            $namaGambar = $request->nama_produk . "." . $ekstensi;
+
+            $request->gambar->move("assets/skincares/", $namaGambar);
+        }
+
+        Produk::create([
+                'nama_produk' => $request->nama_produk,
+                'jenis' => $request->jenis,
+                'deskripsi' => $request->deskripsi,
+                'merk' => $request->merk,
+                'gambar' => $namaGambar,
         ]);
-        Produk::create($validateData);
         return redirect()->route('admin.product')->with('success', 'data produk berhasil ditambahkan');
 
     }

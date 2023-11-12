@@ -20,7 +20,7 @@
                 <form action="{{ route('admin.store') }}" method="POST">
                     <div class="max-w-md mx-auto bg-white p-6 rounded-md shadow-md">
                         @csrf
-                        @if (session('error'))
+                        {{-- @if (session('error'))
                             <div class="mb-6">
                                 <div class="p-2 rounded-sm bg-red-100 ring-1 ring-red-500">
                                     <p class="text-red-500">
@@ -38,6 +38,22 @@
                                     </p>
                                 </div>
                             </div>
+                        @endif --}}
+
+                          {{-- alerts berhasil atau tidak --}}
+
+                            @if (session('success'))
+                            @include('components.alert', [
+                                'title' => 'SUCCESS',
+                                'content' => session('success'),
+                                'type' => 'success',
+                            ])
+                        @elseif (session('error'))
+                            @include('components.alert', [
+                                'title' => 'FAILED',
+                                'content' => session('error'),
+                                'type' => 'error',
+                            ])
                         @endif
 
                         <!-- Nama Produk -->

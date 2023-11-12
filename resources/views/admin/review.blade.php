@@ -4,7 +4,6 @@
     @include('components.header-admin')
 
     <div class="px-14 flex mb-10">
-
         {{-- sidebar --}}
         @include('components.sidebar-admin')
 
@@ -14,8 +13,67 @@
             </div>
             <p class="font-bold text-2xl">REVIEW PAGE</p>
 
-            {{-- disini mau dibuat rencananya total akun, review, produk dll dehh --}}
+            @foreach($review as $rev)
+            {{-- content --}}
+            <div class="p-3 border border-medium-forest-green border-opacity-50 rounded-md">
 
+                {{-- akun yang melakukan review --}}
+
+                <div class="flex justify-between">
+                    <h1> {{ $rev->user_id }}</h1>
+                    <a class="flex items-center hover:text-cool-blue-hover focus:text-cool-blue-click">
+                        <div class="flex flex-col">
+                            <p class="text-light-slate-grey text-xs">Created at
+                                {{ $rev->created_at }}</p>
+                        </div>
+
+                    </a>
+                        <a
+                            onclick="return confirm('Are you sure you want to delete your review?')">
+                            <button class="rounded-md bg-danger p-2 w-10 h-fit">
+                                <img src="{{ asset('assets/images/delete.svg') }}" alt="" class="">
+                            </button>
+                        </a>
+
+
+                </div>
+
+
+                {{-- banner product --}}
+                    <div class="mt-3 flex flex-col">
+                        <a class="border border-oasis bg-oasis bg-opacity-20 rounded-md mt-3 flex p-2 gap-3">
+                            {{-- gambar skincare --}}
+                            <div class="bg-light-slate-grey rounded-s-md w-[100px] h-[100px] bg-cover bg-center"
+                                style="background-image: url('{{ asset('assets/skincares/' . $rev->produk->gambar) }}')">
+                            </div>
+                            {{-- informasi produk --}}
+                            <div class="py-2 text-ellipsis whitespace-nowrap w-[70%]">
+                                <h2 class="text-xl mb-1 truncate">{{ $rev->produk->nama_produk }}</h2>
+                                <p class="mb-1">{{ $rev->produk->merk }}</p>
+                                <p class="text-light-slate-grey">{{ $rev->produk->jenis }}</p>
+                            </div>
+                        </a>
+
+                        {{-- isi review skincare --}}
+                        <div class="flex flex-col h-full justify-between">
+                            <p class=" h-[100px] overflow-hidden text-ellipsis py-2">
+                                {{ $rev->isi }}
+                            </p>
+
+                            <div class="flex flex-row justify-between items-center">
+                                <p class="text-light-slate-grey w-[50%]">{{ count($rev->komentar) }} Comments</p>
+                                <a href="{{ route('user.reviews.details', $rev->id) }}">
+                                    @include('components.text-btn', [
+                                        'label' => 'See More',
+                                        'type' => 'button',
+                                    ])
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class=" w-full p-4"></div>
+            @endforeach
         </div>
     </div>
 

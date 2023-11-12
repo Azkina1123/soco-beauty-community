@@ -21,6 +21,14 @@ class ReviewController extends Controller
             "title" => "Home",
             "reviews" => $data
         ]);
+
+        $reviews = Review::all();
+
+        // Mengambil username untuk setiap review
+        foreach ($reviews as $review) {
+            $user = User::find($review->user_id);
+            $review->username = $user ? $user->username : 'Unknown User';
+        }
     }
     public function myReviews($username)
     {

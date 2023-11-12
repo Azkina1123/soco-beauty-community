@@ -74,7 +74,7 @@
 
                 </div>
             </div>
-            <div class=" w-full p-4"></div>
+        <div class=" w-full p-4"></div>
             @endforeach
 
         </div>

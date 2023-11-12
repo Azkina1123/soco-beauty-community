@@ -110,6 +110,7 @@ Route::middleware("auth")->group(function () {
 
     Route::get('/admin/review', function () {
         return view('admin/review', [
+            "review" => Review::all(),
             "title" => "Review"
         ]);
     })->name("admin.review");
