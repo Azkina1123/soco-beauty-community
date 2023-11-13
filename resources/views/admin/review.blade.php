@@ -11,23 +11,23 @@
             <div class=" w-full p-3">
                 <hr class="border">
             </div>
-            <p class="font-bold text-2xl">REVIEW PAGE</p>
+            <p class="font-bold text-2xl  text-blue-500">REVIEW PAGE</p>
+
+            <div class=" w-full p-3"></div>
 
             @foreach($review as $rev)
+
             {{-- content --}}
             <div class="p-3 border border-medium-forest-green border-opacity-50 rounded-md">
 
                 {{-- akun yang melakukan review --}}
-
                 <div class="flex justify-between">
-                    <h1> {{ $rev->user_id }}</h1>
-                    <a class="flex items-center hover:text-cool-blue-hover focus:text-cool-blue-click">
                         <div class="flex flex-col">
+                            <h1>{{ $rev->user ? $rev->user->username : 'Unknown User' }}</h1>
                             <p class="text-light-slate-grey text-xs">Created at
                                 {{ $rev->created_at }}</p>
                         </div>
 
-                    </a>
                         <a
                             onclick="return confirm('Are you sure you want to delete your review?')">
                             <button class="rounded-md bg-danger p-2 w-10 h-fit">

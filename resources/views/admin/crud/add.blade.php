@@ -17,7 +17,7 @@
             {{-- contents --}}
 
             <div class="w-[100%] py-2 ps-3">
-                <form action="{{ route('admin.store') }}" method="POST">
+                <form action="{{ route('admin.store') }}" method="POST" enctype="multipart/form-data">
                     <div class="max-w-md mx-auto bg-white p-6 rounded-md shadow-md">
                         @csrf
                         {{-- @if (session('error'))

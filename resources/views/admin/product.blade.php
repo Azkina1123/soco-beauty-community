@@ -13,18 +13,14 @@
 
 
         <div class="w-[75%] py-2 ps-3 flex flex-col">
-            <div class=" w-full p-3">
-                <hr class="border">
+            <div class=" w-full p-3"> <hr class="border"></div>
 
-            </div class="flex justify-between items-center">
-                <p class="font-bold text-2xl">PRODUCT PAGE</p>
+            <div class="flex justify-between items-center">
+                <p class="font-bold text-2xl  text-blue-500">PRODUCT PAGE</p>
                 <a href="{{ route('admin.crud.add') }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4">
                     <i class="fas fa-plus"></i> Create
                 </a>
-            <div>
-
             </div>
-
 
             <div class=" w-full p-3"></div>
 
