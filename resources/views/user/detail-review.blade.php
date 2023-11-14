@@ -5,7 +5,7 @@
     <div class="px-14 flex mb-10">
         @include('components.sidebar-reviews')
 
-        <div class="w-[75%] py-2 ps-3 flex flex-col">
+        <div class="w-[75%] py-2 ps-3 flex flex-col mb-5">
             @include('components.review-account')
 
             <p class="mt-3">{{ $review['isi'] }}</p>

@@ -8,6 +8,7 @@
         <div style="background-image: url({{ asset('assets/images/banner.jpg') }})"
             class="h-[500px] bg-cover bg-center flex flex-col items-center justify-center">
 
+            <img src="{{ asset('assets/images/soco.png') }}" alt="logo-soco" class="w-12">
             <h1 class="text-4xl font-semibold">SOCO</h1>
             <p class="text-2xl mb-5 ">Beauty Community</p>
             <p class="text-center">
@@ -21,7 +22,8 @@
 
     {{-- intro --}}
     <div class="flex justify-around px-14 py-28">
-        <div class="flex flex-col justify-center items-center w-[34%] border-0 border-e-2 border-e-medium-forest-green px-2">
+        <div
+            class="flex flex-col justify-center items-center w-[34%] border-0 border-e-2 border-e-medium-forest-green px-2">
             <img src="" alt="">
             <h2 class="font-bold text-medium-forest-green text-center">Trusted Information</h2>
             <p class="text-light-slate-grey text-center">Real product information from official store</p>
@@ -48,33 +50,39 @@
         <p class="text-light-slate-grey">The most reviewed products by users today. </p>
 
         <div class="grid grid-cols-6 gap-5 h-[500px] py-5">
-            <a style="background-image: url('{{ asset('assets/skincares/' . $produks[0]['gambar']) }}')"
+            <a href="{{ route('user.skincares.details', $produks[0]['id']) }}"
+                style="background-image: url('{{ asset('assets/skincares/' . $produks[0]['gambar']) }}')"
                 class="bg-slate-500 row-span-2 col-span-3 bg-cover bg-center flex items-end hover:brightness-95 border border-light-slate-grey border-opacity-25 rounded-md">
 
-                <div class="bg-cyan-blue bg-opacity-40 w-[80%] p-5">
-                    <p class="text-2xl font-bold truncate">{{ $produks[0]['nama_produk'] }}</p>
+                <div class="bg-white bg-opacity-70 w-fit max-w-[80%] p-5 mb-10">
+                    <p class="text-medium-forest-green text-2xl truncate">{{ $produks[0]['nama_produk'] }}</p>
                 </div>
             </a>
 
-            <div style="background-image: url('{{ asset('assets/skincares/' . $produks[1]['gambar']) }}')"
-                class="bg-slate-500 col-span-3 bg-cover bg-center flex items-end hover:brightness-95 border border-light-slate-grey border-opacity-25 rounded-md">
-                <div class="bg-cyan-blue bg-opacity-40 w-[80%] p-5">
-                    <p class="text-2xl font-bold truncate">{{ $produks[1]['nama_produk'] }}</p>
-                </div>
-            </div>
 
-            <div style="background-image: url('{{ asset('assets/skincares/' . $produks[2]['gambar']) }}')"
+            <a href="{{ route('user.skincares.details', $produks[1]['id']) }}"
+                style="background-image: url('{{ asset('assets/skincares/' . $produks[1]['gambar']) }}')"
+                class="bg-slate-500 col-span-3 bg-cover bg-center flex items-end hover:brightness-95 border border-light-slate-grey border-opacity-25 rounded-md">
+                <div class="bg-white bg-opacity-70 w-fit max-w-[70%] p-5 mb-8">
+                    <p class="text-medium-forest-green text-2xl truncate">{{ $produks[1]['nama_produk'] }}</p>
+                </div>
+            </a>
+
+            <a href="{{ route('user.skincares.details', $produks[2]['id']) }}"
+                style="background-image: url('{{ asset('assets/skincares/' . $produks[2]['gambar']) }}')"
                 class="bg-slate-500 col-span-2 bg-cover bg-center flex items-end hover:brightness-95 border border-light-slate-grey border-opacity-25 rounded-md">
-                <div class="bg-cyan-blue bg-opacity-40 w-[80%] p-5">
-                    <p class="text-lg font-bold truncate">{{ $produks[2]['nama_produk'] }}</p>
+                <div class="bg-white bg-opacity-70 w-fit max-w-[70%] mb-5 p-5">
+                    <p class="text-medium-forest-green text-2xl truncate">{{ $produks[2]['nama_produk'] }}</p>
                 </div>
-            </div>
-            <div style="background-image: url('{{ asset('assets/skincares/' . $produks[3]['gambar']) }}')"
+            </a>
+
+            <a href="{{ route('user.skincares.details', $produks[3]['id']) }}"
+                style="background-image: url('{{ asset('assets/skincares/' . $produks[3]['gambar']) }}')"
                 class="bg-slate-500 bg-cover bg-center flex items-end hover:brightness-95 border border-light-slate-grey border-opacity-25 rounded-md">
-                <div class="bg-cyan-blue bg-opacity-40 w-[80%] p-5">
-                    <p class="text-md font-bold truncate">{{ $produks[3]['nama_produk'] }}</p>
+                <div class="bg-white bg-opacity-70 w-fit max-w-[80%] mb-5 p-5">
+                    <p class="text-medium-forest-green text-2xl truncate">{{ $produks[3]['nama_produk'] }}</p>
                 </div>
-            </div>
+            </a>
         </div>
     </div>
 

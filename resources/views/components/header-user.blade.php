@@ -1,6 +1,7 @@
 <header class="w-full flex justify-between items-center px-14 py-5">
 
-    <div class="w-[25%] font-bold text-xl">
+    <div class="w-[25%] font-bold text-xl flex">
+        <img src="{{ asset('assets/images/soco.png') }}" alt="logo-soco" class="w-7 me-2">
         <a href="{{ route('user.home') }}"> SOCO </a>
     </div>
 

@@ -63,6 +63,7 @@ class AuthController extends Controller
             return redirect(route("sign-up"))->with("error", "Wrong confirmation password!");
         }
 
+        // jika username sudah ada
         $usernameExist = User::where("username", $request->username)->first();
         if ($usernameExist) {
             return redirect(route("sign-up"))->with("error", "Username is already in use.");
@@ -82,26 +83,20 @@ class AuthController extends Controller
             // ambil ekstensi dari gambar
             $ekstensi = strtolower(end($filenameArr));
 
+            // daftar ekstensi yang diperbolehkan
+            $extensions = array('jpg', 'jpeg', 'png', 'gif');
+
+            // jika bukan file gambar
+            if (!in_array($ekstensi, $extensions)) {
+                return redirect(route("sign-up"))->with("error", "The file format is not supported.");
+            }
+
             // ubah nama gambar yg akan disimpan
             $namaGambar = $request->username . "." . $ekstensi;
 
             // simpan gambar dgn memindahkan ke file assets/users/
             $request->gambar->move("assets/users/", $namaGambar);
         }
-
-        // $validateData = $request->validate([
-        //     "username" => "required|string|max:20",
-        //     "nama_lengkap" => "required|string|max:100",
-        //     "password" => "required|string",
-        // ]);
-
-        // // check jika user ada memasukkan spasi
-        // $usernameArr = explode(" ", $request->username);
-        // $username = "";
-
-        // foreach ($usernameArr as $key) {
-        //     $username .= $key;
-        // }
 
         User::create([
             "username" => $request->username,
@@ -110,13 +105,6 @@ class AuthController extends Controller
             "gambar" => $namaGambar,
             "admin" => false
         ]);
-        // User::create([
-        //     "username" => $validateData["username"],
-        //     "nama_lengkap" => $validateData["nama_lengkap"],
-        //     "password" => Hash::make($validateData["password"]),
-        //     "gambar" => $namaGambar,
-        //     "admin" => $validateData["admin"]
-        // ]);
 
         return redirect(route("sign-up"))->with("success", "The account has been successfully registered.");
     }

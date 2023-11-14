@@ -35,8 +35,8 @@
                         class="rounded-full bg-cyan-blue bg-opacity-30 w-20 h-20 text-2xl flex justify-center items-center">
                         +
                     </div>
-                    <input type="file" name="gambar" id="gambar" class="w-full" required>
-
+                    <input type="file" name="gambar" id="gambar" class="w-full" required
+                        accept="image/png, image/jpeg">
                 </div>
 
                 <div class="mb-4">

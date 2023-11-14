@@ -34,6 +34,13 @@ Route::get('/', function () {
     ]);
 })->name("landing");
 
+Route::get('/about', function () {
+
+    return view('about', [
+        "title" => "About Soco",
+    ]);
+})->name("about");
+
 // AuthController --------------------------------------------------------------
 Route::controller(AuthController::class)->group(function () {
     Route::get("/login", "showLogin")->name("login");
@@ -93,7 +100,6 @@ Route::middleware("auth")->group(function () {
     })->name("admin.home");
 
 
-
     Route::get('/admin/account', function () {
         return view('admin/account', [
             "account" => User::all(),
@@ -114,17 +120,12 @@ Route::middleware("auth")->group(function () {
             "title" => "Review"
         ]);
     })->name("admin.review");
-
-
-
-
 });
 
-Route::controller(ProdukController::class)->group(function(){
+Route::controller(ProdukController::class)->group(function () {
     Route::get('/admin/product/create', 'create')->name('admin.crud.add');
     Route::post('/admin/product/create/action', 'store')->name('admin.store');
     Route::get('/admin/product/edit/{id}', 'edit')->name('admin.crud.edit');
-    Route::post('/admin/product/edit/{id}/action','update')->name('admin.crud.update');
+    Route::post('/admin/product/edit/{id}/action', 'update')->name('admin.crud.update');
     Route::get('/admin/product/delete/{id}/action', 'delete')->name('admin.crud.delete');
-
 });
