@@ -121,7 +121,10 @@ Route::middleware("auth")->group(function () {
 });
 
 Route::controller(ProdukController::class)->group(function(){
-    Route::get('/admin/account/create', 'create')->name('admin.crud.add');
-    Route::post('/admin/account/create/action', 'store')->name('admin.store');
+    Route::get('/admin/product/create', 'create')->name('admin.crud.add');
+    Route::post('/admin/product/create/action', 'store')->name('admin.store');
+    Route::get('/admin/product/edit/{id}', 'edit')->name('admin.crud.edit');
+    Route::post('/admin/product/edit/{id}/action','update')->name('admin.crud.update');
+    Route::get('/admin/product/delete/{id}/action', 'delete')->name('admin.crud.delete');
 
 });

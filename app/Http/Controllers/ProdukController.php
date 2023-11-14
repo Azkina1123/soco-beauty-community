@@ -103,4 +103,48 @@ class ProdukController extends Controller
         return redirect()->route('admin.product')->with('success', 'data produk berhasil ditambahkan');
 
     }
+
+    public function edit($id){
+        return view('admin.crud.edit',[
+            "title" => "Edit Products",
+            'products' => Produk::all()->where('id', $id)->first(),
+
+        ]);
+    }
+
+    public function update(Request $request, $id){
+        $namaGambar = "";
+
+        if ($request->hasFile("gambar")) {
+            $filename = $request->gambar->getClientOriginalName();
+
+            $filenameArr = explode(".", $filename);
+
+            $ekstensi = strtolower(end($filenameArr));
+
+            $namaGambar = $request->nama_produk . "." . $ekstensi;
+
+            $request->gambar->move("assets/skincares/", $namaGambar);
+        }
+
+        $product = Produk::findOrFail($id);
+
+        $product->update([
+                'nama_produk' => $request->nama_produk,
+                'jenis' => $request->jenis,
+                'deskripsi' => $request->deskripsi,
+                'merk' => $request->merk,
+                'gambar' => $namaGambar,
+        ]);
+        session(['edited_id' => $id]);
+        return redirect()->route('admin.product')->with('success');
+    }
+
+    public function delete($id){
+        $product = Produk::findOrFail($id);
+        $product->delete();
+        return redirect()->route('admin.product')->with('success');
+    }
+
+
 }
