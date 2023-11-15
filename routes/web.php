@@ -120,6 +120,16 @@ Route::middleware("auth")->group(function () {
             "title" => "Review"
         ]);
     })->name("admin.review");
+
+    Route::get('/admin/review/comments/', function () {
+        return view('admin/admindetailreview', [
+            "title" => "Detail Review"
+        ]);
+    })->name("admin.review.detail");
+
+    // Route::get('/admin/review/comments/{review_id}', '')->name('admin.review.comments');
+
+
 });
 
 Route::controller(ProdukController::class)->group(function () {
@@ -129,3 +139,9 @@ Route::controller(ProdukController::class)->group(function () {
     Route::post('/admin/product/edit/{id}/action', 'update')->name('admin.crud.update');
     Route::get('/admin/product/delete/{id}/action', 'delete')->name('admin.crud.delete');
 });
+
+Route::controller(ReviewController::class)->group(function () {
+    Route::get('/admin/review/comments/{review_id}', 'showAdm')->name('admin.review.comments');
+});
+
+

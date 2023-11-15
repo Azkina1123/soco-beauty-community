@@ -118,4 +118,12 @@ class ReviewController extends Controller
 
         return redirect()->route("user.home", ["title" => "Home"])->with("success", "Your review has been successfully deleted!");
     }
+
+    public function showAdm($review_id)
+    {
+    $review = Review::find($review_id);
+    $comments = $review->komentar; // Mengambil semua komentar terkait dengan review ini
+
+    return view('admin.review.comments', compact('review', 'comments'));
+    }
 }
