@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('reviews', function (Blueprint $table) {
             $table->id();
-            $table->string("isi");
+            $table->text("isi");
             $table->foreignId("user_id")->constrained("users")->onDelete("CASCADE");
             $table->foreignId("produk_id")->constrained("produks")->onDelete("CASCADE");
             $table->timestamps();

@@ -36,7 +36,7 @@ class UserFactory extends Factory
             'nama_lengkap' => fake()->name(),
             'admin' => false,
             'password' => Hash::make("1"),
-            'gambar' => fake()->randomElement($users),
+            'gambar' => fake()->unique()->randomElement($users),
         ];
     }
 

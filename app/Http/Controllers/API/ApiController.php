@@ -198,11 +198,7 @@ class ApiController extends Controller
                 "produk" => function ($query) {
                     $query->select("id", "nama_produk", "merk", "jenis", "gambar");
                 }
-            ])->with([
-                "komentar" => function ($query) {
-                    $query->select("id");
-                }
-            ])
+            ])->with("komentar")
             ->take(3)
             ->get();
 
@@ -215,13 +211,13 @@ class ApiController extends Controller
         return response()->json($response);
     }
 
-    public function getAllUser(){
+    public function getAllUser()
+    {
         $response = [
             'status' => 'success',
             'message' => 'Data Berhasil Diambil',
-            'data' => $username
-            ];
-            return response()->json($response);
-
+            // 'data' => $username
+        ];
+        return response()->json($response);
     }
 }
