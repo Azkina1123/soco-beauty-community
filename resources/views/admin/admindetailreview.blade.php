@@ -11,32 +11,31 @@
             <div class=" w-full p-3">
                 <hr class="border">
             </div>
-            <p class="font-bold text-2xl  text-blue-500">REVIEW PAGE</p>
+            <p class="font-bold text-2xl  text-blue-500">COMMENT PAGE</p>
 
             <div class=" w-full p-3"></div>
 
-            @foreach ($review as $rev)
+            {{-- content --}}
+            <div class="p-3 border border-medium-forest-green border-opacity-50 rounded-md">
 
-                {{-- content --}}
-                <div class="p-3 border border-medium-forest-green border-opacity-50 rounded-md">
-
-                    {{-- akun yang melakukan review --}}
-                    <div class="flex justify-between">
+                {{-- akun yang melakukan review --}}
+                <div class="flex justify-between">
                         <div class="flex flex-col">
                             <h1>{{ $rev->user ? $rev->user->username : 'Unknown User' }}</h1>
                             <p class="text-light-slate-grey text-xs">Created at
                                 {{ $rev->created_at }}</p>
                         </div>
 
-                        <a onclick="return confirm('Are you sure you want to delete your review?')">
+                        <a
+                            onclick="return confirm('Are you sure you want to delete your review?')">
                             <button class="rounded-md bg-danger p-2 w-10 h-fit">
                                 <img src="{{ asset('assets/images/delete.svg') }}" alt="" class="">
                             </button>
                         </a>
-                    </div>
+                </div>
 
 
-                    {{-- banner product --}}
+                {{-- banner product --}}
                     <div class="mt-3 flex flex-col">
                         <a class="border border-oasis bg-oasis bg-opacity-20 rounded-md mt-3 flex p-2 gap-3">
                             {{-- gambar skincare --}}
@@ -59,7 +58,7 @@
 
                             <div class="flex flex-row justify-between items-center">
                                 <p class="text-light-slate-grey w-[50%]">{{ count($rev->komentar) }} Comments</p>
-                                <a href="{{ route('admin.review.comments', $rev->id) }}">
+                                <a href="{{ route('user.reviews.details', $rev->id) }}">
                                     @include('components.text-btn', [
                                         'label' => 'See All the Comment Here',
                                         'type' => 'button',
@@ -70,7 +69,7 @@
                     </div>
                 </div>
                 <div class=" w-full p-4"></div>
-            @endforeach
+        </div>
 
         </div>
     </div>
