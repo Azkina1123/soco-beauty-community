@@ -25,7 +25,7 @@ class ReviewController extends Controller
 
         $reviews = Review::all();
 
-        // Mengambil username untuk setiap review
+
         foreach ($reviews as $review) {
             $user = User::find($review->user_id);
             $review->username = $user ? $user->username : 'Unknown User';
@@ -68,6 +68,13 @@ class ReviewController extends Controller
             "reviews" => $data,
             "search" => $nama_produk
         ]);
+    }
+
+    public function showAll(){
+        return view('admin/review', [
+                    "review" => Review::all(),
+                    "title" => "Review"
+                ]);
     }
 
     public function show($id)
@@ -117,7 +124,20 @@ class ReviewController extends Controller
         $review = Review::findOrFail($id);
         $review->delete();
 
-        return redirect()->route("user.home", ["title" => "Home"])->with("success", "Your review has been successfully deleted!");
+        return redirect()->route("admin.review", ["title" => "Home"])->with("success", "Your review has been successfully deleted!");
+    }
+
+    public function showDetail($id)
+    {
+        return view('admin.admindetailreview',[
+            "title" => "Edit Products",
+            'review' => Review::all()->where('id', $id)->first(),
+            'komentar' => Komentar::all()->where('review_id', $id),
+        ]);
+        // $reviewID = Review::findOrFail($id);
+        // // $user = User::find($review->user_id);
+
+        // return redirect()->route("admindetailreview", ['id' => $reviewID, 'title' => 'Detail Review'])->with("success");
     }
 
 }

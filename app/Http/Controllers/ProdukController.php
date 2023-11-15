@@ -66,6 +66,13 @@ class ProdukController extends Controller
         ]);
     }
 
+    public function showAll(){
+        return view('admin/product', [
+            "product" => Produk::all(),
+            "title" => "Product"
+        ]);
+    }
+
     public function create(){
         return view('admin.crud.add', ["title" => "Add Products"]);
     }

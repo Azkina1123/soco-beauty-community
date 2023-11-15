@@ -28,11 +28,14 @@
                                 {{ $rev->created_at }}</p>
                         </div>
 
+                        <form action="{{route('admin.review.delete', $rev->id)}}" method="post">
+                        @csrf
                         <a onclick="return confirm('Are you sure you want to delete your review?')">
                             <button class="rounded-md bg-danger p-2 w-10 h-fit">
                                 <img src="{{ asset('assets/images/delete.svg') }}" alt="" class="">
                             </button>
                         </a>
+                    </form>
                     </div>
 
 
@@ -60,7 +63,7 @@
                             <div class="flex flex-row justify-between items-center">
                                 <p class="text-light-slate-grey w-[50%]">{{ count($rev->komentar) }} Comments</p>
                                 {{-- <a href="{{ route('admin.review.comments', $rev->id) }}"> --}}
-                                <a>
+                                <a href="{{ route('admin.review.detail', $rev->id) }}">
                                     @include('components.text-btn', [
                                         'label' => 'See All the Comment Here',
                                         'type' => 'button',

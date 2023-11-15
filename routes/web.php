@@ -99,45 +99,31 @@ Route::middleware("auth")->group(function () {
         ]);
     })->name("admin.home");
 
+    // --- UserController -------------------------------------------------------------
+    Route::controller(UserController::class)->group(function () {
+        Route::get('/admin/account/', 'showAll')->name('admin.account');
 
-    Route::get('/admin/account', function () {
-        return view('admin/account', [
-            "account" => User::all(),
-            "title" => "Account"
-        ]);
-    })->name("admin.account");
+    });
 
-    Route::get('/admin/product', function () {
-        return view('admin/product', [
-            "product" => Produk::all(),
-            "title" => "Product"
-        ]);
-    })->name("admin.product");
+    // --- ProductController -------------------------------------------------------------
+    Route::controller(ProdukController::class)->group(function () {
+        Route::get('/admin/product/', 'showAll')->name('admin.product');
+        Route::get('/admin/product/create', 'create')->name('admin.crud.add');
+        Route::post('/admin/product/create/action', 'store')->name('admin.store');
+        Route::get('/admin/product/edit/{id}', 'edit')->name('admin.crud.edit');
+        Route::post('/admin/product/edit/{id}/action', 'update')->name('admin.crud.update');
+        Route::post('/admin/product/delete/{id}/action', 'delete')->name('admin.crud.delete');
+    });
 
-    Route::get('/admin/review', function () {
-        return view('admin/review', [
-            "review" => Review::all(),
-            "title" => "Review"
-        ]);
-    })->name("admin.review");
-
-    // Route::get('/admin/review/comments/', function () {
-    //     return view('admin/admindetailreview', [
-    //         "title" => "Detail Review"
-    //     ]);
-    // })->name("admin.review.detail");
-
-    // Route::get('/admin/review/comments/{review_id}', '')->name('admin.review.comments');
+    // --- ReviewController -------------------------------------------------------------
+    Route::controller(ReviewController::class)->group(function () {
+        Route::get('/admin/review/', 'showAll')->name('admin.review');
+        Route::post('/admin/review/delete/{id}/action', 'delete')->name('admin.review.delete');
+        Route::get('/admin/review/{id}', 'showDetail')->name('admin.review.detail');
+    });
 
 
-});
 
-Route::controller(ProdukController::class)->group(function () {
-    Route::get('/admin/product/create', 'create')->name('admin.crud.add');
-    Route::post('/admin/product/create/action', 'store')->name('admin.store');
-    Route::get('/admin/product/edit/{id}', 'edit')->name('admin.crud.edit');
-    Route::post('/admin/product/edit/{id}/action', 'update')->name('admin.crud.update');
-    Route::get('/admin/product/delete/{id}/action', 'delete')->name('admin.crud.delete');
 });
 
 

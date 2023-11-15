@@ -39,6 +39,13 @@ class UserController extends Controller
         ]);
     }
 
+    public function showAll(){
+        return view('admin/account', [
+            "account" => User::all(),
+            "title" => "Account"
+        ]);
+    }
+
     public function update(Request $request)
     {
 
