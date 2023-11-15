@@ -6,6 +6,13 @@
 
 <section class="footer">
     <div class="container bg-cyan-blue max-w-full mx-auto py-10 px-14">
+        <div class="flex flex-col items-center md:flex-grow md:justify-between">
+            <h1 class="text-2xl font-semibold">SOCO </h1>
+            <h2>Beauty Community</h2>
+        </div>
+
+        <div class="py-5"></div>
+
         <ul class="grid grid-cols-1 items-start gap-5 pb-5 md:grid-cols-2 lg:grid-cols-4 ">
             <li>
                 <div class="space-y-6 my-2">
@@ -23,10 +30,10 @@
             <li>
                 <div class="flex flex-col px-16 gap-3">
                     <h3 class="text-lg uppercase font-oswald">SUPPORT</h3>
-                    <a href="" class="text-xs hover:bg-yellow-500">ABOUT US</a>
-                    <a href="" class="text-xs  hover:bg-yellow-500">CONTACT US</a>
-                    <a href="" class="text-xs hover:bg-yellow-500">PRIVACY POLICY</a>
-                    <a href="" class="text-xs  hover:bg-yellow-500">FAQ's</a>
+                    <a href="" class="text-xs hover:bg-white">ABOUT US</a>
+                    <a href="" class="text-xs  hover:bg-white">CONTACT US</a>
+                    <a href="" class="text-xs hover:bg-white">PRIVACY POLICY</a>
+                    <a href="" class="text-xs  hover:bg-white">FAQ's</a>
                 </div>
             </li>
 
@@ -77,9 +84,6 @@
 
         </ul>
 
-        <div class="flex flex-col items-center py-5 md:flex-grow md:justify-between">
-            <h1 class="text-2xl font-semibold">SOCO </h1>
-            <h2>Beauty Community</h2>
-        </div>
+
     </div>
 </section>
