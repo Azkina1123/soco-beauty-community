@@ -35,15 +35,17 @@
                                 <option value="Moisturizer">Moisturizer</option>
                                 <option value="Facial Wash">Facial Wash</option>
                                 <option value="Serum">Serum</option>
+                                <option value="Toner">Toner</option>
                                 <option value="Sunscreen">Sunscreen</option>
-                                <option value="Exfoliating Scrub">Exfoliating Scrub</option>
                             </select>
                         </div>
 
                         <!-- Deskripsi -->
                         <div class="mb-4">
                             <label for="deskripsi" class="block text-gray-700 font-bold mb-2">Deskripsi:</label>
-                            <textarea id="deskripsi" name="deskripsi" value="{{$products->deksipsi}}" rows="3" class="w-full p-2 border border-gray-300 rounded"></textarea>
+                            <textarea id="deskripsi" name="deskripsi" rows="3" class="w-full p-2 border border-gray-300 rounded">
+                                {{ $products->deskripsi }}
+                            </textarea>
                         </div>
 
                         <!-- Merk -->
@@ -64,7 +66,7 @@
                         <div class="mb-4">
                             <button type="submit"
                                 class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                                Add
+                                EDIT PRODUCTS
                             </button>
                         </div>
                     </div>

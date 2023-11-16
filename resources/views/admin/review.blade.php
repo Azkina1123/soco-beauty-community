@@ -15,6 +15,22 @@
 
             <div class=" w-full p-3"></div>
 
+
+            {{-- sess --}}
+            @if (session('success'))
+                @include('components.alert', [
+                    'type' => 'success',
+                    'title' => 'SUCCESS',
+                    'content' => session('success'),
+                ])
+            @elseif (session('failed'))
+                @include('components.alert', [
+                    'type' => 'error',
+                    'title' => 'FAILED',
+                    'content' => session('failed'),
+                ])
+            @endif
+
             @foreach ($review as $rev)
 
                 {{-- content --}}

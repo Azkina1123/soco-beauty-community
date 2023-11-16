@@ -117,7 +117,7 @@ Route::middleware("auth")->group(function () {
         Route::post('/admin/product/create/action', 'store')->name('admin.store');
         Route::get('/admin/product/edit/{id}', 'edit')->name('admin.crud.edit');
         Route::post('/admin/product/edit/{id}/action', 'update')->name('admin.crud.update');
-        Route::post('/admin/product/delete/{id}/action', 'delete')->name('admin.crud.delete');
+        Route::get('/admin/product/delete/{id}/action', 'delete')->name('admin.crud.delete');
     });
 
     // --- ReviewController -------------------------------------------------------------
@@ -128,7 +128,6 @@ Route::middleware("auth")->group(function () {
     });
 
     Route::controller(KomentarController::class)->group(function () {
-        //Route::get("/user/reviews/details/{idReview}/comments/delete/{id}/deleteAction", "delete")->name("user.comments.delete.action");
         Route::get("/admin/review/{id}/details/delete/{idComment}/deleteaction", "deleteAdm")->name("admin.comments.delete.action");
      });
 

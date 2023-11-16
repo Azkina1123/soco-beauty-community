@@ -18,27 +18,37 @@
 
             {{-- disini mau dibuat rencananya total akun, review, produk dll dehh --}}
             <div class="flex flex-row justify-between items-center">
-                <div class="px-36 py-8 border border-medium-forest-green border-opacity-50 rounded-md">
-                    <i class="fa-solid fa-list-ul"></i>
+                <a href="{{ route('admin.account')}}">
+                    <div class="px-36 py-8 border border-medium-forest-green border-opacity-50 rounded-md">
+                    <i class="fa-solid fa-users"></i>
                     <p class="text-black text-xl">{{ count($user) }} Accounts</p>
                 </div>
-                <div class="px-36 py-8 border border-medium-forest-green border-opacity-50 rounded-md">
-                    <i class="fa-solid fa-comments"></i>
-                    <p class="text-black text-xl">{{ count($produk) }} Products..</p>
-                </div>
+                </a>
+
+                <a href="{{ route('admin.product')}}">
+                    <div class="px-36 py-8 border border-medium-forest-green border-opacity-50 rounded-md">
+                        <i class="fa-solid fa-boxes-stacked"></i>
+                        <p class="text-black text-xl">{{ count($produk) }} Products..</p>
+                    </div>
+                 </a>
             </div>
 
             <div class=" w-full p-3"></div>
 
             <div class="flex flex-row justify-between items-center">
-                <div class="px-36 py-8 border border-medium-forest-green border-opacity-50 rounded-md">
-                    <i class="fa-solid fa-list-ul"></i>
-                    <p class="text-black text-xl">{{ count($review) }} Reviews</p>
-                </div>
-                <div class="px-36 py-8 border border-medium-forest-green border-opacity-50 rounded-md">
-                    <i class="fa-solid fa-comments"></i>
-                    <p class="text-black text-xl">{{ count($komentar) }} Comments</p>
-                </div>
+                <a href="{{ route('admin.review')}}">
+                    <div class="px-36 py-8 border border-medium-forest-green border-opacity-50 rounded-md">
+                        <i class="fa-solid fa-list-ul"></i>
+                        <p class="text-black text-xl">{{ count($review) }} Reviews</p>
+                    </div>
+                </a>
+
+                <a href="{{ route('admin.review')}}">
+                    <div class="px-36 py-8 border border-medium-forest-green border-opacity-50 rounded-md">
+                        <i class="fa-solid fa-comments"></i>
+                        <p class="text-black text-xl">{{ count($komentar) }} Comments</p>
+                    </div>
+                </a>
             </div>
         </div>
     </div>

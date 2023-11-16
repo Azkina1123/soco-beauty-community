@@ -161,9 +161,9 @@ class ProdukController extends Controller
         $product = Produk::findOrFail($id);
 
         // hapus gambar dari asset
-        unlink(asset("assets/skincares/" . $product->gambar));
+        //unlink(asset("assets/skincares/" . $product->gambar));
 
         $product->delete();
-        return redirect()->route('admin.product')->with('success');
+        return redirect()->route('admin.product')->with('success', 'Data Products Has Been Sucesfully Deleted!');
     }
 }
