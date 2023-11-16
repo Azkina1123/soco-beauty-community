@@ -14,26 +14,30 @@
             </div>
             <p class="font-bold text-2xl">HOME PAGE</p>
 
+            <div class=" w-full p-3"></div>
+
             {{-- disini mau dibuat rencananya total akun, review, produk dll dehh --}}
             <div class="flex flex-row justify-between items-center">
-                <div>
-                    <p class="text-light-slate-grey w-[50%]">{{ count($user) }} Akun</p>
+                <div class="px-36 py-8 border border-medium-forest-green border-opacity-50 rounded-md">
+                    <i class="fa-solid fa-list-ul"></i>
+                    <p class="text-black text-xl">{{ count($user) }} Accounts</p>
                 </div>
-                <div>
-                  <p class="text-light-slate-grey w-[50%]">{{ count($produk) }} Produk</p>
+                <div class="px-36 py-8 border border-medium-forest-green border-opacity-50 rounded-md">
+                    <i class="fa-solid fa-comments"></i>
+                    <p class="text-black text-xl">{{ count($produk) }} Products..</p>
                 </div>
-
             </div>
 
             <div class=" w-full p-3"></div>
 
             <div class="flex flex-row justify-between items-center">
-                <div>
-                    <p class="text-light-slate-grey w-[50%]">{{ count($review) }} Review</p>
+                <div class="px-36 py-8 border border-medium-forest-green border-opacity-50 rounded-md">
+                    <i class="fa-solid fa-list-ul"></i>
+                    <p class="text-black text-xl">{{ count($review) }} Reviews</p>
                 </div>
-
-                <div>
-                    <p class="text-light-slate-grey w-[50%]">{{ count($komentar) }} Comments</p>
+                <div class="px-36 py-8 border border-medium-forest-green border-opacity-50 rounded-md">
+                    <i class="fa-solid fa-comments"></i>
+                    <p class="text-black text-xl">{{ count($komentar) }} Comments</p>
                 </div>
             </div>
         </div>
