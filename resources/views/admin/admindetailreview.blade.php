@@ -11,11 +11,28 @@
             <div class=" w-full p-3">
                 <hr class="border">
             </div>
-            <p class="font-bold text-2xl  text-blue-500">REVIEW & COMMENT PAGE</p>
+            <p class="font-bold text-2xl  text-blue-500">COMMENT PAGE</p>
 
             <div class=" w-full p-3"></div>
 
-            {{-- content --}}
+            {{-- sess --}}
+            @if (session('success'))
+                @include('components.alert', [
+                    'type' => 'success',
+                    'title' => 'SUCCESS',
+                    'content' => session('success'),
+                ])
+            @elseif (session('failed'))
+                @include('components.alert', [
+                    'type' => 'error',
+                    'title' => 'FAILED',
+                    'content' => session('failed'),
+                ])
+            @endif
+
+            <p class="font-bold text-xl  text-blue-500">REVIEW</p>
+            <div class=" w-full p-1"></div>
+     {{-- content --}}
             <div class="p-3 border border-medium-forest-green border-opacity-50 rounded-md">
 
                 {{-- akun yang melakukan review --}}
@@ -52,8 +69,13 @@
                     </div>
             </div>
 
+
+            <div class=" w-full p-3"></div>
+            <hr class="border my-5">
+            <p class="font-bold text-xl  text-blue-500">COMMENT</p>
+            <hr class="border my-5">
+            {{-- KOMENTAR --}}
             @foreach ($komentar as $komen)
-                <hr class="border my-5">
                 <div class="flex">
 
                     <div class="w-24 flex justify-center">
@@ -65,12 +87,12 @@
                     <div class="w-full">
                         <p class="text-sm text-light-slate-grey">{{ $komen->user->username }} •
                             {{ date('d M Y H.i', strtotime($komen->created_at)) }} </p>
-                        <p>{{ $komen['isi'] }}</p>
+                        <p>{{ $komen->isi}}</p>
                     </div>
 
-                    <a href="{{ route('user.comments.delete.action', [
-                        'idReview' => $review['id'],
-                        'id' => $komen['id'],
+                    <a href="{{ route('admin.comments.delete.action', [
+                        'id' => $review->id,
+                        'idComment' => $komen->id,
                          ]) }}"
                         onclick="return confirm('Are you sure you want to delete your comment?')">
                         <button class="rounded-md bg-danger p-2 w-7 h-fit">
@@ -78,6 +100,7 @@
                         </button>
                     </a>
                 </div>
+                <div class=" w-full p-4"></div>
             @endforeach
         </div>
 

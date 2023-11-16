@@ -130,7 +130,7 @@ class ReviewController extends Controller
     public function showDetail($id)
     {
         return view('admin.admindetailreview',[
-            "title" => "Edit Products",
+            "title" => "Detail Review",
             'review' => Review::all()->where('id', $id)->first(),
             'komentar' => Komentar::all()->where('review_id', $id),
         ]);

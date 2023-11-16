@@ -2,14 +2,15 @@
 
 use App\Models\User;
 use App\Models\Produk;
-use App\Http\Controllers\AuthController;
-use App\Http\Controllers\KomentarController;
-use App\Http\Controllers\ProdukController;
-use App\Http\Controllers\ReviewController;
-use App\Http\Controllers\UserController;
 use App\Models\Review;
+use App\Models\Komentar;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\ProdukController;
+use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\KomentarController;
 
 /*
 |--------------------------------------------------------------------------
@@ -95,7 +96,11 @@ Route::middleware("auth")->group(function () {
     // -=- ADMIN =========================================================================
     Route::get('/admin/home', function () {
         return view('admin/home', [
-            "title" => "Home"
+            "title" => "Home",
+            "komentar" => Komentar::all(),
+            "review" => Review::all(),
+            "produk" => Produk::all(),
+            "user" => User::all(),
         ]);
     })->name("admin.home");
 
@@ -119,8 +124,14 @@ Route::middleware("auth")->group(function () {
     Route::controller(ReviewController::class)->group(function () {
         Route::get('/admin/review/', 'showAll')->name('admin.review');
         Route::post('/admin/review/delete/{id}/action', 'delete')->name('admin.review.delete');
-        Route::get('/admin/review/{id}', 'showDetail')->name('admin.review.detail');
+        Route::get('/admin/review/{id}/details', 'showDetail')->name('admin.review.detail');
     });
+
+    Route::controller(KomentarController::class)->group(function () {
+        //Route::get("/user/reviews/details/{idReview}/comments/delete/{id}/deleteAction", "delete")->name("user.comments.delete.action");
+        Route::get("/admin/review/{id}/details/delete/{idComment}/deleteaction", "deleteAdm")->name("admin.comments.delete.action");
+     });
+
 
 
 

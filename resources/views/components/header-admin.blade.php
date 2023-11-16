@@ -5,10 +5,11 @@
     </div>
 
     <div class="w-[50%] flex justify-end items-center">
-        <a href="{{ route('user.profile', ['username' => Auth::user()->username]) }}"
+        <a href=" {{ route('user.profile', Auth::user()->username) }}"
             class="menu-profile flex justify-end items-center text-light-slate-grey hover:text-cool-blue-hover focus:text-cool-blue-click">
-            <p class="">{{ Auth::user()->username }}</p>
-            <div class="rounded-full bg-black w-12 h-12 ms-5"></div>
+            <p class="username">{{ Auth::user()->username }}</p>
+            <div class="rounded-full bg-black w-12 h-12 ms-5 bg-cover bg-center"
+                style="background-image: url('{{ asset('assets/users/' . Auth::user()->gambar) }}')"></div>
         </a>
     </div>
 

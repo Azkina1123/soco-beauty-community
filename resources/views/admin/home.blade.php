@@ -15,7 +15,27 @@
             <p class="font-bold text-2xl">HOME PAGE</p>
 
             {{-- disini mau dibuat rencananya total akun, review, produk dll dehh --}}
+            <div class="flex flex-row justify-between items-center">
+                <div>
+                    <p class="text-light-slate-grey w-[50%]">{{ count($user) }} Akun</p>
+                </div>
+                <div>
+                  <p class="text-light-slate-grey w-[50%]">{{ count($produk) }} Produk</p>
+                </div>
 
+            </div>
+
+            <div class=" w-full p-3"></div>
+
+            <div class="flex flex-row justify-between items-center">
+                <div>
+                    <p class="text-light-slate-grey w-[50%]">{{ count($review) }} Review</p>
+                </div>
+
+                <div>
+                    <p class="text-light-slate-grey w-[50%]">{{ count($komentar) }} Comments</p>
+                </div>
+            </div>
         </div>
     </div>
 
