@@ -14,7 +14,7 @@
         </div>
 
     </a>
-    
+
     @if (Auth::user() !== null)
         @if ($review['user_id'] == Auth::user()->id || Auth::user()->admin)
             <a href="{{ route('user.reviews.delete.action', $review['id']) }}"

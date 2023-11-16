@@ -66,18 +66,21 @@ class ProdukController extends Controller
         ]);
     }
 
-    public function showAll(){
+    public function showAll()
+    {
         return view('admin/product', [
             "product" => Produk::all(),
             "title" => "Product"
         ]);
     }
 
-    public function create(){
+    public function create()
+    {
         return view('admin.crud.add', ["title" => "Add Products"]);
     }
 
-    public function store(Request $request){
+    public function store(Request $request)
+    {
         // $validateData = $request->validate([
         //     'nama_produk' => 'required|string',
         //     'jenis' => 'required|string',
@@ -101,28 +104,34 @@ class ProdukController extends Controller
         }
 
         Produk::create([
-                'nama_produk' => $request->nama_produk,
-                'jenis' => $request->jenis,
-                'deskripsi' => $request->deskripsi,
-                'merk' => $request->merk,
-                'gambar' => $namaGambar,
+            'nama_produk' => $request->nama_produk,
+            'jenis' => $request->jenis,
+            'deskripsi' => $request->deskripsi,
+            'merk' => $request->merk,
+            'gambar' => $namaGambar,
         ]);
         return redirect()->route('admin.product')->with('success', 'data produk berhasil ditambahkan');
-
     }
 
-    public function edit($id){
-        return view('admin.crud.edit',[
+    public function edit($id)
+    {
+        return view('admin.crud.edit', [
             "title" => "Edit Products",
             'products' => Produk::all()->where('id', $id)->first(),
 
         ]);
     }
 
-    public function update(Request $request, $id){
-        $namaGambar = "";
+    public function update(Request $request, $id)
+    {
+        // nama gambar lama
+        $namaGambar = Produk::where("id", $id)->first()->gambar;
 
         if ($request->hasFile("gambar")) {
+            // hapus gambar lama
+            unlink("assets/skincares/$namaGambar");
+
+            // buat nama gambar baru
             $filename = $request->gambar->getClientOriginalName();
 
             $filenameArr = explode(".", $filename);
@@ -137,21 +146,24 @@ class ProdukController extends Controller
         $product = Produk::findOrFail($id);
 
         $product->update([
-                'nama_produk' => $request->nama_produk,
-                'jenis' => $request->jenis,
-                'deskripsi' => $request->deskripsi,
-                'merk' => $request->merk,
-                'gambar' => $namaGambar,
+            'nama_produk' => $request->nama_produk,
+            'jenis' => $request->jenis,
+            'deskripsi' => $request->deskripsi,
+            'merk' => $request->merk,
+            'gambar' => $namaGambar,
         ]);
         session(['edited_id' => $id]);
         return redirect()->route('admin.product')->with('success');
     }
 
-    public function delete($id){
+    public function delete($id)
+    {
         $product = Produk::findOrFail($id);
+
+        // hapus gambar dari asset
+        unlink(asset("assets/skincares/" . $product->gambar));
+
         $product->delete();
         return redirect()->route('admin.product')->with('success');
     }
-
-
 }
