@@ -38,6 +38,24 @@ class UserFactory extends Factory
             'password' => Hash::make("1"),
             'gambar' => fake()->unique()->randomElement($users),
         ];
+
+        // // tambahkan admin
+        // return [
+        //     'username' => "admin",
+        //     'nama_lengkap' => "Arabella Beth",
+        //     'admin' => true,
+        //     'password' => Hash::make("admin"),
+        //     'gambar' => "admin.png",
+        // ];
+
+        // // tambahkan user
+        // return [
+        //     'username' => "vanezuela123",
+        //     'nama_lengkap' => "Vanez Blossom",
+        //     'admin' => false,
+        //     'password' => Hash::make("123"),
+        //     'gambar' => "vanezuela123.png",
+        // ];
     }
 
     /**
