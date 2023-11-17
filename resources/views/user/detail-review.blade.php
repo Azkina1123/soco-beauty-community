@@ -81,6 +81,7 @@
                         <p>{{ $komentar['isi'] }}</p>
                     </div>
 
+                    {{-- tombol delete komentar --}}
                     @if ($komentar['user_id'] == Auth::user()->id || Auth::user()->admin)
                         <a href="{{ route('user.comments.delete.action', [
                             'idReview' => $review['id'],
@@ -94,8 +95,6 @@
                     @endif
                 </div>
             @endforeach
-
-
 
         </div>
 

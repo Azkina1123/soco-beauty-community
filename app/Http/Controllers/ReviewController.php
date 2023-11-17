@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Produk;
 use App\Models\Review;
 use App\Models\Komentar;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
@@ -70,11 +71,12 @@ class ReviewController extends Controller
         ]);
     }
 
-    public function showAll(){
+    public function showAll()
+    {
         return view('admin/review', [
-                    "review" => Review::all(),
-                    "title" => "Review"
-                ]);
+            "review" => Review::all(),
+            "title" => "Review"
+        ]);
     }
 
     public function show($id)
@@ -129,7 +131,7 @@ class ReviewController extends Controller
 
     public function showDetail($id)
     {
-        return view('admin.admindetailreview',[
+        return view('admin.admindetailreview', [
             "title" => "Detail Review",
             'review' => Review::all()->where('id', $id)->first(),
             'komentar' => Komentar::all()->where('review_id', $id),
@@ -139,5 +141,4 @@ class ReviewController extends Controller
 
         // return redirect()->route("admindetailreview", ['id' => $reviewID, 'title' => 'Detail Review'])->with("success");
     }
-
 }
