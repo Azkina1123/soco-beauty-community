@@ -5,6 +5,21 @@
  Beauty Community
 </h1>
 
+<div align="center">
+
+<h3 align="center"> 
+    Projek Akhir Praktikum <br>
+    Framework-Based Programming <br>
+</h3>
+    <h4> Kelompok 5 </h4>
+
+| NIM | Nama | Tugas |
+|:-----:|:---:|:-----:|
+| 2109106004 | Aziizah Oki Shofrina (Ketua) | Front-end & Back-end User  |
+| 2109106036 | Ekleccia Reydianto | Front-end & Back-end Admin 
+
+</div>
+
 # Daftar Isi
 - <a href="#deskripsi"> Deskripsi </a>
 - <a href="#fitur"> Fitur </a>
