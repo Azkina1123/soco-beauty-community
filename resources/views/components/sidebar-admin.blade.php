@@ -1,14 +1,18 @@
 <div class="w-[25%] pe-2">
-    <form action="" class="px-2">
-        @include('components.input', [
-            'type' => 'search',
-            'name' => 'search',
-            'placeholder' => 'Search',
-            'required' => false,
-        ])
-    </form>
 
     <div class="mt-5 flex flex-col items-start">
+
+        <div class= "flex flex-row px-4 items-center justify-between w-[45%]">
+            <i class="fa-solid fa-user-secret fa-xl"></i>
+            <h1 class="font-bold">ADMIN</h1>
+        </div>
+
+
+        <div class=" w-full p-3">
+            <hr class="border">
+        </div>
+
+
 
         <a href="{{ route('admin.home') }}">
             @include('components.text-btn', [
@@ -40,7 +44,6 @@
         </a>
         <div class=" w-full p-3">
             <hr class="border">
-
         </div>
 
         <a href="{{ route('logout') }}">
