@@ -1,8 +1,9 @@
 
-<center>
-<img src="public/assets/images/soco.png" width="90">
-<h1> SOCO <br> <p>Beauty Community</p></h1>
-</center>
+<h1 align="center">
+<img src="public/assets/images/soco.png" width="90"> <br>
+ SOCO <br> 
+ Beauty Community
+</h1>
 
 # Daftar Isi
 - <a href="#tampilan-website"> Deskripsi </a>
