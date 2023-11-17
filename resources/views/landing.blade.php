@@ -52,7 +52,7 @@
         <div class="grid grid-cols-6 gap-5 h-[500px] py-5">
             <a href="{{ route('user.skincares.details', $produks[0]['id']) }}"
                 style="background-image: url('{{ asset('assets/skincares/' . $produks[0]['gambar']) }}')"
-                class="bg-white row-span-2 col-span-3 bg-contain bg-no-repeat bg-center flex items-end hover:brightness-95 border border-light-slate-grey border-opacity-25 rounded-md">
+                class="bg-white row-span-2 col-span-3 bg-contain bg-no-repeat bg-center flex items-end hover:brightness-95 border border-medium-forest-green border-opacity-50 rounded-md">
 
                 <div class="bg-white bg-opacity-70 w-fit max-w-[80%] p-5 mb-10">
                     <p class="text-medium-forest-green text-2xl truncate">{{ $produks[0]['nama_produk'] }}</p>
@@ -62,7 +62,7 @@
 
             <a href="{{ route('user.skincares.details', $produks[1]['id']) }}"
                 style="background-image: url('{{ asset('assets/skincares/' . $produks[1]['gambar']) }}')"
-                class="bg-white col-span-3 bg-contain bg-no-repeat bg-center flex items-end hover:brightness-95 border border-light-slate-grey border-opacity-25 rounded-md">
+                class="bg-white col-span-3 bg-contain bg-no-repeat bg-center flex items-end hover:brightness-95 border border-medium-forest-green border-opacity-50 rounded-md">
                 <div class="bg-white bg-opacity-70 w-fit max-w-[70%] p-5 mb-8">
                     <p class="text-medium-forest-green text-2xl truncate">{{ $produks[1]['nama_produk'] }}</p>
                 </div>
@@ -70,7 +70,7 @@
 
             <a href="{{ route('user.skincares.details', $produks[2]['id']) }}"
                 style="background-image: url('{{ asset('assets/skincares/' . $produks[2]['gambar']) }}')"
-                class="bg-white col-span-2 bg-contain bg-no-repeat bg-center flex items-end hover:brightness-95 border border-light-slate-grey border-opacity-25 rounded-md">
+                class="bg-white col-span-2 bg-contain bg-no-repeat bg-center flex items-end hover:brightness-95 border border-medium-forest-green border-opacity-50 rounded-md">
                 <div class="bg-white bg-opacity-70 w-fit max-w-[70%] mb-5 p-5">
                     <p class="text-medium-forest-green text-2xl truncate">{{ $produks[2]['nama_produk'] }}</p>
                 </div>
@@ -78,7 +78,7 @@
 
             <a href="{{ route('user.skincares.details', $produks[3]['id']) }}"
                 style="background-image: url('{{ asset('assets/skincares/' . $produks[3]['gambar']) }}')"
-                class="bg-white bg-contain bg-no-repeat bg-center flex items-end hover:brightness-95 border border-light-slate-grey border-opacity-25 rounded-md">
+                class="bg-white bg-contain bg-no-repeat bg-center flex items-end hover:brightness-95 border border-medium-forest-green border-opacity-50 rounded-md">
                 <div class="bg-white bg-opacity-70 w-fit max-w-[80%] mb-5 p-5">
                     <p class="text-medium-forest-green text-2xl truncate">{{ $produks[3]['nama_produk'] }}</p>
                 </div>
