@@ -30,13 +30,10 @@
                     ])
                 @endif
 
-                <div class="flex flex-col items-center justify-center mb-4 mt-12">
-                    <div
-                        class="rounded-full bg-cyan-blue bg-opacity-30 w-20 h-20 text-2xl flex justify-center items-center">
-                        +
-                    </div>
-                    <input type="file" name="gambar" id="gambar" class="w-full" required
-                        accept="image/png, image/jpeg">
+                <div class=" mb-4 mt-12">
+                    <label for="gambar" class="font-bold"> Photo </label>
+                    <input type="file" name="gambar" id="gambar" required accept="image/png, image/jpeg"
+                        class="outline-0 rounded-md mt-2 px-3 py-2 w-full bg-transparent ring-1 ring-light-slate-grey focus:ring-2 focus:ring-cyan-blue">
                 </div>
 
                 <div class="mb-4">

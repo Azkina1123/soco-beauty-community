@@ -30,10 +30,10 @@
             <li>
                 <div class="flex flex-col px-16 gap-3">
                     <h3 class="text-lg uppercase font-oswald">SUPPORT</h3>
-                    <a href="" class="text-xs hover:bg-white">ABOUT US</a>
-                    <a href="" class="text-xs  hover:bg-white">CONTACT US</a>
-                    <a href="" class="text-xs hover:bg-white">PRIVACY POLICY</a>
-                    <a href="" class="text-xs  hover:bg-white">FAQ's</a>
+                    <a href="" class="text-xs hover:bg-white hover:bg-opacity-20">ABOUT US</a>
+                    <a href="" class="text-xs  hover:bg-white hover:bg-opacity-20">CONTACT US</a>
+                    <a href="" class="text-xs hover:bg-white hover:bg-opacity-20">PRIVACY POLICY</a>
+                    <a href="" class="text-xs  hover:bg-white hover:bg-opacity-20">FAQ's</a>
                 </div>
             </li>
 
@@ -72,11 +72,11 @@
                 <div class="space-y-2 px-12">
                     <h3 class="text-lg uppercase font-oswald">follow us</h3>
 
-                   <div class="space-x-3">
+                    <div class="space-x-3">
                         <i class="fa-brands fa-facebook-f text-lg cursor-pointer"></i>
                         <i class="fa-brands fa-twitter text-lg cursor-pointer"></i>
                         <i class="fa-brands fa-square-instagram text-lg cursor-pointer"></i>
-                   </div>
+                    </div>
                 </div>
 
 

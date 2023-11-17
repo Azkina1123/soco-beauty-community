@@ -22,8 +22,8 @@
                     <a href="{{ route('user.skincares.details', $produk['id']) }}"
                         class="h-[300px] border border-light-slate-grey border-opacity-50 rounded-md hover:shadow-md shadow-light-slate-grey flex flex-col items-center">
 
-                        <div class="w-[50%] h-[70%] p-2">
-                            <div class="bg-center bg-cover h-full"
+                        <div class="w-full h-[70%] p-2">
+                            <div class="bg-center bg-contain bg-no-repeat h-full"
                                 style="background-image: url('{{ asset('assets/skincares/' . $produk['gambar']) }}')">
 
                             </div>

@@ -39,7 +39,8 @@ class UserController extends Controller
         ]);
     }
 
-    public function showAll(){
+    public function showAll()
+    {
         return view('admin/account', [
             "account" => User::all(),
             "title" => "Account"
@@ -68,6 +69,7 @@ class UserController extends Controller
             return redirect(route("user.profile.edit"))->with("error", "Username is already in use.");
         }
 
+        // ambil nama gambar lama
         $namaGambar = Auth::user()->gambar;
 
         // kalau user berhasil mengupload gambar

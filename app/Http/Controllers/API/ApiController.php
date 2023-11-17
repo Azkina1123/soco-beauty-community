@@ -15,6 +15,7 @@ class ApiController extends Controller
     // dapatkan data semua review
     public function getReviews()
     {
+        // urutkan review dari yang terbaru
         $reviews = Review::orderBy("created_at", "desc")->with([
             "user" => function ($query) {
                 $query->select("id", "username", "gambar");
@@ -67,6 +68,7 @@ class ApiController extends Controller
             ->orWhere("jenis", "=", "$request->search")
             ->get();
 
+        // cari review terkait
         $reviews = Review::with([
             "user" => function ($query) {
                 $query->select("id", "username", "gambar");
@@ -132,6 +134,7 @@ class ApiController extends Controller
                         }
                     ]);
                 }
+                // hanya ambil komentar terkait dengan data review yang diambil
             ])->where("id", "=", $idReview)
             ->get();
 
@@ -150,6 +153,7 @@ class ApiController extends Controller
             ->orWhere("jenis", "=", "$request->search")
             ->get();
 
+        // jika sedang mencari produk berdasarkan category
         if (!empty($request->category)) {
             $produks = Produk::orderBy("created_at", "desc")
                 ->orWhere("jenis", "=", $request->category == "facial-wash" ? "facial wash" : $request->category)
@@ -172,6 +176,7 @@ class ApiController extends Controller
         return response()->json($response);
     }
 
+    // ambil data user tertentu berdasarkan username
     public function getUser($username)
     {
         $user = User::with([
