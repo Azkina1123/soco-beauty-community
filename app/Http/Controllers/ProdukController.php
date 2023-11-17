@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Produk;
+use App\Models\Review;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 
@@ -38,7 +39,7 @@ class ProdukController extends Controller
         $endpoint = env("BASE_ENV") . "/api/user/skincares/details/$id";
         $data = Http::get($endpoint);
 
-        $count = Produk::with("review")->where("id", $id)->count();
+        $count = Review::with("produk")->where("produk_id", $id)->count();
 
         // return $data;
         return view('user.detail-skincare', [
@@ -161,7 +162,7 @@ class ProdukController extends Controller
         $product = Produk::findOrFail($id);
 
         // hapus gambar dari asset
-        //unlink(asset("assets/skincares/" . $product->gambar));
+        unlink("assets/skincares/" . $product->gambar);
 
         $product->delete();
         return redirect()->route('admin.product')->with('success', 'Data Products Has Been Sucesfully Deleted!');

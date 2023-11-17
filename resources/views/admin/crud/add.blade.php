@@ -40,9 +40,9 @@
                             </div>
                         @endif --}}
 
-                          {{-- alerts berhasil atau tidak --}}
+                        {{-- alerts berhasil atau tidak --}}
 
-                            @if (session('success'))
+                        @if (session('success'))
                             @include('components.alert', [
                                 'title' => 'SUCCESS',
                                 'content' => session('success'),
@@ -71,7 +71,7 @@
                                 <option value="Facial Wash">Facial Wash</option>
                                 <option value="Serum">Serum</option>
                                 <option value="Sunscreen">Sunscreen</option>
-                                <option value="Exfoliating Scrub">Exfoliating Scrub</option>
+                                <option value="Toner">Toner</option>
                             </select>
                         </div>
 

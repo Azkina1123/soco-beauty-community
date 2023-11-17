@@ -1,7 +1,11 @@
 @extends('layouts.global')
 
 @section('content')
-    @include('components.header-user')
+    @if (Auth::user()->admin)
+        @include('components.header-admin')
+    @else
+        @include('components.header-user')
+    @endif
 
     <div class="px-14 flex mb-10">
 

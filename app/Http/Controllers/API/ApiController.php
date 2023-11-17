@@ -62,10 +62,11 @@ class ApiController extends Controller
     // dapatkan data hanya review yang dicari
     public function getSearchReviews(Request $request)
     {
+        $search = strtolower($request->search);
         // cari produk berdasarkan nama produk || jenis produk
         $produks = Produk::select("id")
-            ->where("nama_produk", "LIKE", "%$request->search%")
-            ->orWhere("jenis", "=", "$request->search")
+            ->where("nama_produk", "LIKE", "%$search%")
+            ->orWhere("jenis", "=", "$search")
             ->get();
 
         // cari review terkait
@@ -79,7 +80,7 @@ class ApiController extends Controller
             }
         ])->with("komentar")
             // cari review berdasarkan isi review
-            ->where("isi", "LIKE", "%$request->search%")
+            ->where("isi", "LIKE", "%$search%")
             // cari review berdasarkan nama produk || jenis produk || produk_id
             ->orWhere(function ($query) use ($produks) {
                 $query->whereIn("produk_id", $produks->toArray());
@@ -147,10 +148,11 @@ class ApiController extends Controller
     // dapatkan data semua produk
     public function getProduks(Request $request)
     {
+        $search = strtolower($request->search);
         // cari produk berdasarkan nama produk || jenis produk
         $produks = Produk::orderBy("created_at", "desc")
-            ->where("nama_produk", "LIKE", "%$request->search%")
-            ->orWhere("jenis", "=", "$request->search")
+            ->where("nama_produk", "LIKE", "%$search%")
+            ->orWhere("jenis", "=", "$search")
             ->get();
 
         // jika sedang mencari produk berdasarkan category

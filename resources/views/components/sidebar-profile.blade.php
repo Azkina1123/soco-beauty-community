@@ -2,6 +2,15 @@
 
     <div class="mt-5 flex flex-col items-start">
 
+        @if (Auth::user()->admin)
+            <a href="{{ route('admin.home') }}">
+                @include('components.text-btn', [
+                    'label' => 'Home',
+                    'type' => 'button',
+                    'color' => 'green',
+                ])
+            </a>
+        @endif
         <a href="{{ route('user.profile', Auth::user()->username) }}" class="sub-menu profile">
             @include('components.text-btn', [
                 'label' => 'My Profile',
