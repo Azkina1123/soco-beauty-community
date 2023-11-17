@@ -6,7 +6,7 @@
 </h1>
 
 # Daftar Isi
-- <a href="#tampilan-website"> Deskripsi </a>
+- <a href="#deskripsi"> Deskripsi </a>
 - <a href="#fitur"> Fitur </a>
 - <a href="#tampilan-website"> Tampilan Website </a>
     - [Halaman Landing](#1-halaman-landing)
