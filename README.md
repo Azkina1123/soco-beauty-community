@@ -36,7 +36,12 @@
     - [Halaman Detail Produk - User](#10-halaman-detail-produk---user)
     - [Halaman Profile - User](#11-halaman-profile---user)
     - [Halaman Edit Profile - User](#12-halaman-edit-profile---user)
-    - [Halaman Edit Home - Admin](#13-halaman-home---admin)
+    - [Halaman Home - Admin](#13-halaman-home---admin)
+    - [Halaman Data Akun - Admin](#14-halaman-data-akun---admin)
+    - [Halaman Data Produk - Admin](#15-halaman-data-produk---admin)
+    - [Halaman Add Produk - Admin](#16-halaman-add-produk---admin)
+    - [Halaman Data Review Produk - Admin](#17-halaman-data-review-produk---admin)
+    - [Halaman Detail Review Produk - Admin](#18-halaman-detail-review-produk---admin)
 
 
 
@@ -117,10 +122,10 @@ Halaman Edit Profile menampilkan formulir yang hampir sama pada Halaman Sign Up.
 ### 13. Halaman Home - Admin
 <img src="public/assets/screenshots/admin_home.png">
 
-### 14. Halaman Tampilan Daftar Akun - Admin
+### 14. Halaman Data Akun - Admin
 <img src="public/assets/screenshots/admin_account.png">
 
-### 15. Halaman Tampilan Produk - Admin
+### 15. Halaman Data Produk - Admin
 <img src="public/assets/screenshots/admin_products.png">
 
 ### 16. Halaman Add Produk - Admin
@@ -129,7 +134,7 @@ Halaman Edit Profile menampilkan formulir yang hampir sama pada Halaman Sign Up.
 ### 17. Halaman Edit Produk - Admin
 <img src="public/assets/screenshots/admin_edit.png">
 
-### 18. Halaman Review Produk - Admin
+### 18. Halaman Data Review Produk - Admin
 <img src="public/assets/screenshots/admin_review.png">
 
 ### 19. Halaman Detail Review Produk - Admin
