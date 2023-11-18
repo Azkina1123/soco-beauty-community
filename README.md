@@ -36,6 +36,7 @@
     - [Halaman Detail Produk - User](#10-halaman-detail-produk---user)
     - [Halaman Profile - User](#11-halaman-profile---user)
     - [Halaman Edit Profile - User](#12-halaman-edit-profile---user)
+    - [Halaman Edit Home - Admin](#13-halaman-home---admin)
 
 
 
@@ -65,7 +66,6 @@ Pada website ini terdapat dua macam jenis akun, yakni User dan Admin. Terdapat p
 
 
 # Tampilan Website
-## USER
 ### 1. Halaman Landing 
 <img src="public/assets/screenshots/landing.jpeg">
 Halaman ini adalah tampilan awal yang akan ditampilkan kepada user sebelum melakukan login. Struktur dari halaman ini terdiri dari header yang memiliki 4 macam menu, yaitu Home, About, Login, dan Sign Up. Pada bagian konten, diperkenalkan slogan dari website dan kelebihan-kelebihan dari penggunaan website kepada user. Selain itu, ditampilkan juga sekilas produk-produk terpopuler yang telah diulas dan ulasan-ulasan terkini yang dibuat oleh user yang telah terdaftar. Pada bagian bawah, terdapat footer yang menampilkan beberapa kontak website yang dapat dihubungi.
@@ -114,24 +114,23 @@ Halaman Profile pada akun User menampilkan data akun user, seperti username, nam
 <img src="public/assets/screenshots/user - edit profile.jpeg">
 Halaman Edit Profile menampilkan formulir yang hampir sama pada Halaman Sign Up. Perbedaannya terletak pada kolom input New Password yang bisa diisikan apabila ingin mengganti password akun.
 
-## ADMIN
-### 1. Halaman Home - Admin
+### 13. Halaman Home - Admin
 <img src="public/assets/screenshots/admin_home.png">
 
-### 2. Halaman Tampilan Daftar Akun - Admin
+### 14. Halaman Tampilan Daftar Akun - Admin
 <img src="public/assets/screenshots/admin_account.png">
 
-### 3. Halaman Tampilan Produk - Admin
+### 15. Halaman Tampilan Produk - Admin
 <img src="public/assets/screenshots/admin_products.png">
 
-### 4. Halaman Add Produk - Admin
+### 16. Halaman Add Produk - Admin
 <img src="public/assets/screenshots/admin_add.png">
 
-### 5. Halaman Edit Produk - Admin
+### 17. Halaman Edit Produk - Admin
 <img src="public/assets/screenshots/admin_edit.png">
 
-### 6. Halaman Review Produk - Admin
+### 18. Halaman Review Produk - Admin
 <img src="public/assets/screenshots/admin_review.png">
 
-### 7. Halaman Detail Review Produk - Admin
+### 19. Halaman Detail Review Produk - Admin
 <img src="public/assets/screenshots/admin_comment.png">
