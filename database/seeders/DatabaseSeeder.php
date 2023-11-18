@@ -18,11 +18,11 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         // buat akun admin & user
-        // User::factory(1)->create();
+        User::factory(1)->create();
 
-        User::factory(10)->create();
-        Produk::factory(15)->create();
-        Review::factory(20)->create();
-        Komentar::factory(60)->create();
+        // User::factory(10)->create();
+        // Produk::factory(15)->create();
+        // Review::factory(16)->create();
+        // Komentar::factory(40)->create();
     }
 }

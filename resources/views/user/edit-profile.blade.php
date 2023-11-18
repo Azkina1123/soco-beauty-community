@@ -13,8 +13,6 @@
 
         <div class="flex flex-col justify-center py-2 ps-3 w-full mb-10">
 
-
-
             <form action="{{ route('user.profile.edit.action') }}" method="POST" enctype="multipart/form-data"
                 class="w-[50%] self-center">
                 @csrf
@@ -27,7 +25,7 @@
                     ])
                 @elseif(session('error'))
                     @include('components.alert', [
-                        'title' => 'Failed',
+                        'title' => 'FAILED',
                         'content' => session('error'),
                         'type' => 'error',
                     ])
@@ -108,9 +106,9 @@
                 <div class="grid grid-cols-2 gap-3 mt-8">
 
                     <a href="{{ route('user.profile', Auth::user()->username) }}">
-                        @include('components.elevated-btn', ['label' => 'Cancel', 'type' => 'button'])
+                        @include('components.outlined-btn', ['label' => 'Cancel', 'type' => 'button'])
                     </a>
-                    @include('components.outlined-btn', [
+                    @include('components.elevated-btn', [
                         'label' => 'Edit',
                         'type' => 'submit',
                     ])

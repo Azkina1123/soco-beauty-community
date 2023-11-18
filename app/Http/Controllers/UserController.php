@@ -51,9 +51,16 @@ class UserController extends Controller
     {
 
         $password = Auth::user()->password;
-        // jika confirm password salah dan masih pakai password lama
+
+        // jika password lama salah
+        if (!Hash::check($request->password, $password)) {
+            return redirect(route("user.profile.edit"))->with("error", "Wrong password!");
+        }
+
         if (
+            // jika confirm password salah dan masih pakai password lama
             ($request->password != $request->confirm && empty($request->newPassword)) ||
+            // jika confirm password salah dan ganti password baru
             ($request->newPassword != $request->confirm && !empty($request->newPassword))
         ) {
             return redirect(route("user.profile.edit"))->with("error", "Wrong confirmation password!");
@@ -61,9 +68,10 @@ class UserController extends Controller
 
         // jika ganti password
         if (!empty($request->newPassword)) {
-            $password = $request->newPassword;
+            $password = Hash::make($request->newPassword);
         }
 
+        // jika username sudah digunakan
         $usernameExist = User::where("username", $request->username)->first();
         if ($usernameExist && $request->username != Auth::user()->username) {
             return redirect(route("user.profile.edit"))->with("error", "Username is already in use.");
@@ -98,9 +106,9 @@ class UserController extends Controller
         $user->update([
             "username" => $request->username,
             "nama_lengkap" => $request->nama_lengkap,
-            "password" => Hash::make($request->password),
+            "password" => $password,
             "gambar" => $namaGambar,
-            "admin" => false
+            "admin" => Auth::user()->admin
         ]);
         return redirect(route("user.profile.edit"))->with("success", "The account has been successfully updated.");
     }

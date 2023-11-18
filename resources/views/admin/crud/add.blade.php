@@ -59,14 +59,15 @@
                         <!-- Nama Produk -->
                         <div class="mb-4">
                             <label for="nama_produk" class="block text-gray-700 font-bold mb-2">Nama Produk:</label>
-                            <input type="text" id="nama_produk" name="nama_produk"
+                            <input type="text" id="nama_produk" name="nama_produk" required
                                 class="w-full p-2 border border-gray-300 rounded">
                         </div>
 
                         <!-- Jenis -->
                         <div class="mb-4">
                             <label for="jenis" class="block text-gray-700 font-bold mb-2">Jenis:</label>
-                            <select id="jenis" name="jenis" class="w-full p-2 border border-gray-300 rounded">
+                            <select id="jenis" name="jenis" class="w-full p-2 border border-gray-300 rounded"
+                                required>
                                 <option value="Moisturizer">Moisturizer</option>
                                 <option value="Facial Wash">Facial Wash</option>
                                 <option value="Serum">Serum</option>
@@ -78,20 +79,20 @@
                         <!-- Deskripsi -->
                         <div class="mb-4">
                             <label for="deskripsi" class="block text-gray-700 font-bold mb-2">Deskripsi:</label>
-                            <textarea id="deskripsi" name="deskripsi" rows="3" class="w-full p-2 border border-gray-300 rounded"></textarea>
+                            <textarea id="deskripsi" name="deskripsi" rows="3" required class="w-full p-2 border border-gray-300 rounded"></textarea>
                         </div>
 
                         <!-- Merk -->
                         <div class="mb-4">
                             <label for="merk" class="block text-gray-700 font-bold mb-2">Merk:</label>
-                            <input type="text" id="merk" name="merk"
+                            <input type="text" id="merk" name="merk" required
                                 class="w-full p-2 border border-gray-300 rounded">
                         </div>
 
                         <!-- Gambar -->
                         <div class="mb-4">
                             <label for="gambar" class="block text-gray-700 font-bold mb-2">Gambar:</label>
-                            <input type="file" id="gambar" name="gambar"
+                            <input type="file" id="gambar" name="gambar" required
                                 class="w-full p-2 border border-gray-300 rounded">
                         </div>
 

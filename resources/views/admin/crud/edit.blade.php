@@ -25,13 +25,14 @@
                         <div class="mb-4">
                             <label for="nama_produk" class="block text-gray-700 font-bold mb-2">Nama Produk:</label>
                             <input type="text" id="nama_produk" name="nama_produk" value="{{ $products->nama_produk }}"
-                                class="w-full p-2 border border-gray-300 rounded">
+                                required class="w-full p-2 border border-gray-300 rounded">
                         </div>
 
                         <!-- Jenis -->
                         <div class="mb-4">
                             <label for="jenis" class="block text-gray-700 font-bold mb-2">Jenis:</label>
-                            <select id="jenis" name="jenis" class="w-full p-2 border border-gray-300 rounded">
+                            <select id="jenis" name="jenis" class="w-full p-2 border border-gray-300 rounded"
+                                required>
                                 <option
                                     value="Moisturizer"{{ strtolower($products->jenis) == 'moisturizer' ? 'selected' : '' }}>
                                     Moisturizer</option>
@@ -51,13 +52,13 @@
                         <!-- Deskripsi -->
                         <div class="mb-4">
                             <label for="deskripsi" class="block text-gray-700 font-bold mb-2">Deskripsi:</label>
-                            <textarea id="deskripsi" name="deskripsi" rows="3" class="w-full p-2 border border-gray-300 rounded">{{ $products->deskripsi }}</textarea>
+                            <textarea id="deskripsi" name="deskripsi" rows="3" required class="w-full p-2 border border-gray-300 rounded">{{ $products->deskripsi }}</textarea>
                         </div>
 
                         <!-- Merk -->
                         <div class="mb-4">
                             <label for="merk" class="block text-gray-700 font-bold mb-2">Merk:</label>
-                            <input type="text" id="merk" name="merk" value="{{ $products->merk }}"
+                            <input type="text" id="merk" name="merk" value="{{ $products->merk }}" required
                                 class="w-full p-2 border border-gray-300 rounded">
                         </div>
 

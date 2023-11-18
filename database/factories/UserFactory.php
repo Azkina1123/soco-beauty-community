@@ -31,24 +31,24 @@ class UserFactory extends Factory
             "user-10.jpg",
         ];
 
-        return [
-            'username' => fake()->userName(),
-            'nama_lengkap' => fake()->name(),
-            'admin' => false,
-            'password' => Hash::make("1"),
-            'gambar' => fake()->unique()->randomElement($users),
-        ];
-
-        // // tambahkan admin
         // return [
-        //     'username' => "admin",
-        //     'nama_lengkap' => "Arabella Beth",
-        //     'admin' => true,
-        //     'password' => Hash::make("admin"),
-        //     'gambar' => "admin.png",
+        //     'username' => fake()->userName(),
+        //     'nama_lengkap' => fake()->name(),
+        //     'admin' => false,
+        //     'password' => Hash::make("1"),
+        //     'gambar' => fake()->unique()->randomElement($users),
         // ];
 
-        // // tambahkan user
+        // tambahkan admin
+        return [
+            'username' => "admin",
+            'nama_lengkap' => "Arabella Beth",
+            'admin' => true,
+            'password' => Hash::make("admin"),
+            'gambar' => "admin.png",
+        ];
+
+        // tambahkan user
         // return [
         //     'username' => "vanezuela123",
         //     'nama_lengkap' => "Vanez Blossom",
