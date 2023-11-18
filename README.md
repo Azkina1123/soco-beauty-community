@@ -122,21 +122,28 @@ Halaman Edit Profile menampilkan formulir yang hampir sama pada Halaman Sign Up.
 
 ### 13. Halaman Home - Admin
 <img src="public/assets/screenshots/admin_home.png">
+Halaman Home Admin menampilkan total akun yang ada, total produk yang ada, total review yang ada, dan total detail review atau komentar yang ada dalam database. Admin juga dapat langsung klik pada total akun, total produk, total review, dan total komentar untuk dialihkan ke page yang berkaitan.
 
 ### 14. Halaman Data Akun - Admin
 <img src="public/assets/screenshots/admin_account.png">
+Halaman Data Akun, pada halaman ini admin dapat melihat data pengguna atau user yang ada pada database. 
 
 ### 15. Halaman Data Produk - Admin
 <img src="public/assets/screenshots/admin_products.png">
+Halaman Data Produk, pada halaman ini admin dapat melihat data produk yang ada, dan memungkinkan admin untuk melakukan CRUD pada database produk di laman ini.
 
 ### 16. Halaman Add Produk - Admin
 <img src="public/assets/screenshots/admin_add.png">
+Halaman Add Produk merupakan bagian dari halaman data produk, dimana admin dapat menambahkan produk ke dalam database. Admin perlu menambahkan Nama Produk, Jenis Produk, Merk Produk, Deskripsi Produk, dan Upload Foto Produk. 
 
 ### 17. Halaman Edit Produk - Admin
 <img src="public/assets/screenshots/admin_edit.png">
+Halaman Add Produk merupakan bagian dari halaman data produk, dimana admin dapat mengedit data produk yang ada dalam database. Pada laman ini, textfield otomatis akan di place dengan data yang mau kita edit sebelumnya, sehingga ini memudahkan admin dalam mengedit data. 
 
 ### 18. Halaman Data Review Produk - Admin
 <img src="public/assets/screenshots/admin_review.png">
+Halaman Review Produk merupakan halaman tampilan review serta produk yang telah dibuat oleh user, dimana pada tampilan review ini terdapat review produk, produk yang di review serta akun yang melakukan review tersebut. Pada tampilan review produk ini terdapat option delete dan see all comments. Admin memungkinkan untuk menghapus data review produk. 
 
 ### 19. Halaman Detail Review Produk - Admin
 <img src="public/assets/screenshots/admin_comment.png">
+Halaman Detail Review Produk merupakan bagian dari halaman review produk, Pada laman detail review produk terdapat rev
