@@ -146,4 +146,4 @@ Halaman Review Produk merupakan halaman tampilan review serta produk yang telah 
 
 ### 19. Halaman Detail Review Produk - Admin
 <img src="public/assets/screenshots/admin_comment.png">
-Halaman Detail Review Produk merupakan bagian dari halaman review produk, Pada laman detail review produk terdapat rev
+Halaman Detail Review Produk merupakan bagian dari halaman review produk, Pada laman detail review produk terdapat review user, pengguna yang review serta komentar dari review tersebut. Admin dapat melakukan penghapusan komentar yang tidak pantas terhadap review produk.
